@@ -82,41 +82,46 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 900;
-      padding: 20px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
-      background: linear-gradient(to bottom, rgba(14,11,8,0.9) 0%, transparent 100%);
+      padding: 18px 48px;
+      display: flex; align-items: center;
+      background: rgba(10,8,5,0.92);
+      backdrop-filter: blur(10px);
     }
     .nav-logo {
       font-family: var(--font-kana);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       letter-spacing: 0.25em;
       color: var(--tan);
       text-decoration: none;
       flex-shrink: 0;
+      margin-right: auto;
     }
-    .nav-links { display: flex; gap: 32px; }
+    .nav-links {
+      display: flex; gap: 28px;
+      margin-right: 28px;
+    }
     .nav-links a {
       font-family: var(--font-mincho);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
       color: var(--dim);
       text-decoration: none;
+      white-space: nowrap;
       transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--tan); }
     .nav-open {
       font-family: var(--font-latin);
       font-style: italic;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
       color: var(--lantern);
       border: 1px solid rgba(232,151,58,0.35);
-      padding: 6px 18px;
+      padding: 6px 16px;
       text-decoration: none;
-      transition: all 0.3s;
       flex-shrink: 0;
       white-space: nowrap;
+      transition: all 0.3s;
     }
     .nav-open:hover { background: rgba(232,151,58,0.1); }
 
@@ -1430,8 +1435,8 @@
     const navEl = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       navEl.style.background = window.scrollY > 60
-        ? 'rgba(10,8,5,0.95)'
-        : 'linear-gradient(to bottom, rgba(14,11,8,0.9) 0%, transparent 100%)';
+        ? 'rgba(10,8,5,0.97)'
+        : 'rgba(10,8,5,0.92)';
     });
 
     // Mobile drawer
