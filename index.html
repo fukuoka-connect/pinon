@@ -251,10 +251,10 @@
     /* バー写真 */
     .hero-photo {
       position: absolute; inset: 0;
-      background-image: url('/mnt/user-data/uploads/IMG_0997.jpeg');
+      background-image: url('images/pinon-bartender.jpg');
       background-size: cover;
-      background-position: center 20%;
-      filter: grayscale(80%) brightness(0.22) contrast(1.3);
+      background-position: center 30%;
+      filter: grayscale(60%) brightness(0.25) contrast(1.2);
       mix-blend-mode: luminosity;
     }
 
@@ -667,8 +667,15 @@
 
     .atm-sub {
       background: var(--warm);
-      padding: 36px 32px;
+      padding: 0;
+      overflow: hidden;
     }
+    .atm-sub-img {
+      width: 100%; height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .atm-sub-body { padding: 28px 28px 32px; }
 
     .atm-sub-tag {
       font-family: var(--font-latin);
@@ -1269,7 +1276,7 @@
       </h2>
 
       <div class="atm-main reveal">
-        <img src="/mnt/user-data/uploads/IMG_0997.jpeg" alt="PiNON Bar 店内カウンター" loading="lazy">
+        <img src="images/pinon-counter.jpg" alt="PiNON Bar 店内カウンター" loading="lazy">
         <div class="atm-main-overlay">
           <h3>カウンター<span class="sm">の</span>むこうに、16年分<span class="sm">の</span>記憶<span class="sm">が</span>ある。</h3>
           <p>ずらりと並んだボトルと笑顔のバーテンダー。この景色が、大名の路地裏に16年間あり続けた。</p>
@@ -1278,19 +1285,28 @@
 
       <div class="atm-sub-row">
         <div class="atm-sub reveal">
-          <span class="atm-sub-tag">Interior</span>
-          <h4>木<span class="sm">の</span>温<span class="sm">もりと</span>薄暗<span class="sm">い</span>灯<span class="sm">り</span></h4>
-          <p>木を基調とした内装。間接照明が作り出す光と影が、特別な夜の時間を演出する。</p>
+          <img class="atm-sub-img" src="images/pinon-stained-lamp.jpg" alt="ステンドグラスランプと木のカウンター" loading="lazy">
+          <div class="atm-sub-body">
+            <span class="atm-sub-tag">Interior</span>
+            <h4>木<span class="sm">の</span>温<span class="sm">もりと</span>薄暗<span class="sm">い</span>灯<span class="sm">り</span></h4>
+            <p>木を基調とした内装。間接照明が作り出す光と影が、特別な夜の時間を演出する。</p>
+          </div>
         </div>
         <div class="atm-sub reveal reveal-d1">
-          <span class="atm-sub-tag">Seating</span>
-          <h4>カウンター 6席<span class="sm">、</span>テーブル 2卓</h4>
-          <p>小さな空間だからこそ、バーテンダーとの距離が近い。一人でも、自然と馴染める場所。</p>
+          <img class="atm-sub-img" src="images/pinon-sofa.jpg" alt="ソファ席" loading="lazy">
+          <div class="atm-sub-body">
+            <span class="atm-sub-tag">Seating</span>
+            <h4>カウンター 6席<span class="sm">、</span>テーブル 2卓</h4>
+            <p>小さな空間だからこそ、バーテンダーとの距離が近い。一人でも、自然と馴染める場所。</p>
+          </div>
         </div>
         <div class="atm-sub reveal reveal-d2">
-          <span class="atm-sub-tag">Vibe</span>
-          <h4>お一人様<span class="sm">も、</span>大歓迎</h4>
-          <p>ふらっと一人で来る常連も多い。気兼ねなく、自分のペースで楽しんでほしい。</p>
+          <img class="atm-sub-img" src="images/pinon-whisky.jpg" alt="ウイスキーグラス" loading="lazy">
+          <div class="atm-sub-body">
+            <span class="atm-sub-tag">Vibe</span>
+            <h4>お一人様<span class="sm">も、</span>大歓迎</h4>
+            <p>ふらっと一人で来る常連も多い。気兼ねなく、自分のペースで楽しんでほしい。</p>
+          </div>
         </div>
       </div>
     </div>
