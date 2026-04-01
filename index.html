@@ -92,6 +92,7 @@
       letter-spacing: 0.25em;
       color: var(--tan);
       text-decoration: none;
+      flex-shrink: 0;
     }
     .nav-links { display: flex; gap: 32px; }
     .nav-links a {
@@ -113,8 +114,48 @@
       padding: 6px 18px;
       text-decoration: none;
       transition: all 0.3s;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .nav-open:hover { background: rgba(232,151,58,0.1); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+      z-index: 1001;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--tan);
+      transition: all 0.3s;
+    }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 999;
+      background: rgba(14,11,8,0.96);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 36px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: var(--font-mincho);
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-drawer a:hover { color: var(--tan); }
 
     /* ══════════════════════════════
        HERO — 路地の入口
@@ -998,6 +1039,8 @@
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
+      .nav-open { display: none; }
+      .nav-hamburger { display: flex; }
 
       .section-wrap { padding: 72px 24px; }
 
@@ -1041,7 +1084,17 @@
       <a href="#info">アクセス</a>
     </div>
     <a href="#info" class="nav-open">Open 20:00 →</a>
+    <div class="nav-hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#story" onclick="closeDrawer()">物語</a>
+    <a href="#features" onclick="closeDrawer()">特徴</a>
+    <a href="#atmosphere" onclick="closeDrawer()">空間</a>
+    <a href="#info" onclick="closeDrawer()">アクセス</a>
+    <a href="#info" onclick="closeDrawer()" style="color:var(--lantern);font-style:italic;">Open 20:00 →</a>
+  </div>
 
   <!-- ══ HERO ══ -->
   <section id="hero">
@@ -1379,6 +1432,20 @@
         ? 'rgba(10,8,5,0.95)'
         : 'linear-gradient(to bottom, rgba(14,11,8,0.9) 0%, transparent 100%)';
     });
+
+    // Mobile drawer
+    function toggleDrawer() {
+      var drawer = document.getElementById('navDrawer');
+      var hamburger = document.querySelector('.nav-hamburger');
+      drawer.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeDrawer() {
+      document.getElementById('navDrawer').classList.remove('open');
+      document.querySelector('.nav-hamburger').classList.remove('active');
+      document.body.style.overflow = '';
+    }
   </script>
 </body>
 </html>
