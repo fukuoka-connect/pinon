@@ -249,15 +249,7 @@
     }
 
     /* バー写真 */
-    .hero-photo {
-      position: absolute; inset: 0;
-      background-image: url('images/pinon-bartender.jpg');
-      background-size: cover;
-      background-position: center 30%;
-      filter: grayscale(30%) brightness(0.45) contrast(1.1);
-      mix-blend-mode: normal;
-      opacity: 0.7;
-    }
+    .hero-photo { display: none; }
 
     .hero-content {
       position: relative; z-index: 2;
@@ -1144,7 +1136,7 @@
       <div class="hero-signboard hero-fade d4">
         <div class="signboard-inner">
           <div class="sb-logo">PiNON</div>
-          <div class="sb-sub">Bar — Since 2009</div>
+          <div class="sb-sub">Bar — Since 2010</div>
           <div class="sb-divider"></div>
           <div class="sb-info-row">
             <span class="sb-label">OPEN</span>
@@ -1197,37 +1189,11 @@
           </p>
         </div>
 
-        <!-- 手書き風地図 SVG -->
-        <div class="map-sketch reveal reveal-d2">
-          <div class="map-title">アクセス略図 — 大名エリア</div>
-          <svg class="hand-map" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- 道路 -->
-            <line x1="0" y1="130" x2="320" y2="130" stroke="rgba(200,169,110,0.25)" stroke-width="14"/>
-            <line x1="160" y1="0" x2="160" y2="260" stroke="rgba(200,169,110,0.15)" stroke-width="8"/>
-            <line x1="60" y1="0" x2="60" y2="260" stroke="rgba(200,169,110,0.1)" stroke-width="4"/>
-            <line x1="260" y1="0" x2="260" y2="260" stroke="rgba(200,169,110,0.1)" stroke-width="4"/>
-            <line x1="0" y1="70" x2="320" y2="70" stroke="rgba(200,169,110,0.1)" stroke-width="4"/>
-            <line x1="0" y1="200" x2="320" y2="200" stroke="rgba(200,169,110,0.1)" stroke-width="4"/>
-            <!-- 路地 -->
-            <line x1="110" y1="130" x2="110" y2="200" stroke="rgba(200,169,110,0.35)" stroke-width="3" stroke-dasharray="4 3"/>
-            <!-- ラベル -->
-            <text x="140" y="124" fill="rgba(200,169,110,0.5)" font-size="9" font-family="serif" letter-spacing="1">大名通り</text>
-            <text x="162" y="85" fill="rgba(200,169,110,0.35)" font-size="8" font-family="serif" transform="rotate(90,162,85)">明治通り</text>
-            <!-- 建物 -->
-            <rect x="88" y="152" width="44" height="36" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.3)" stroke-width="1"/>
-            <text x="110" y="175" fill="rgba(200,169,110,0.7)" font-size="7.5" font-family="serif" text-anchor="middle">養巴コープ</text>
-            <!-- ピン -->
-            <circle cx="110" cy="155" r="6" fill="rgba(232,151,58,0.9)"/>
-            <circle cx="110" cy="155" r="3" fill="#1a1410"/>
-            <line x1="110" y1="161" x2="110" y2="152" stroke="rgba(232,151,58,0.9)" stroke-width="1.5"/>
-            <!-- 光の放射 -->
-            <circle cx="110" cy="155" r="12" fill="none" stroke="rgba(232,151,58,0.2)" stroke-width="1"/>
-            <circle cx="110" cy="155" r="20" fill="none" stroke="rgba(232,151,58,0.1)" stroke-width="1"/>
-            <!-- 天神ラベル -->
-            <text x="240" y="125" fill="rgba(200,169,110,0.4)" font-size="9" font-family="serif">→ 天神</text>
-            <text x="20" y="125" fill="rgba(200,169,110,0.4)" font-size="9" font-family="serif">大濠 ←</text>
-          </svg>
-          <div class="map-pin-label">
+        <!-- Google Map -->
+        <div class="map-sketch reveal reveal-d2" style="padding:0;overflow:hidden;border-radius:8px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.7200964371823!2d130.39246599999998!3d33.586616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191872fc89b8f%3A0x370373e9e43646e5!2sPiNON%20Bar!5e0!3m2!1sja!2sjp!4v1775059668991!5m2!1sja!2sjp"
+            width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-pin-label" style="padding:16px 20px;">
             📍 大名1-8-5　養巴コープ 1階右奥<br>
             ☎ 092-732-7510
           </div>
