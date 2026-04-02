@@ -251,23 +251,6 @@
     /* バー写真 */
     .hero-photo { display: none; }
 
-    /* HEROロゴ背景 */
-    .hero-logo-bg {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .hero-logo-bg img {
-      width: 70%;
-      max-width: 800px;
-      height: auto;
-      opacity: 0.06;
-      filter: grayscale(0.3);
-    }
 
     .hero-content {
       position: relative; z-index: 2;
@@ -706,6 +689,46 @@
     }
 
     /* ══════════════════════════════
+       MASTER — 店主
+    ══════════════════════════════ */
+    #master { background: var(--bg2); }
+
+    .master-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .master-photo {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .master-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .master-text h3 {
+      font-family: var(--font-kaisei);
+      font-weight: 500;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .master-text p {
+      font-size: 0.92rem;
+      line-height: 2.3;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .master-layout { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ══════════════════════════════
        QUOTE — 言葉
     ══════════════════════════════ */
     #quote {
@@ -1129,7 +1152,6 @@
     <div class="hero-sky"></div>
     <div class="hero-texture"></div>
     <div class="hero-photo"></div>
-    <div class="hero-logo-bg"><img src="images/hero-bg-logo.png" alt=""></div>
     <div class="lantern-glow lg-1"></div>
     <div class="lantern-glow lg-2"></div>
 
@@ -1285,6 +1307,27 @@
             <h4>お一人様<span class="sm">も、</span>大歓迎</h4>
             <p>ふらっと一人で来る常連も多い。気兼ねなく、自分のペースで楽しんでほしい。</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MASTER ══ -->
+  <section id="master">
+    <div class="section-wrap">
+      <span class="sec-label reveal">Bartender</span>
+      <h2 class="reveal">
+        この<span class="sm">カウンターに、</span><br>
+        笑顔<span class="sm">が</span>ある<span class="sm">。</span>
+      </h2>
+      <div class="master-layout">
+        <div class="master-photo reveal">
+          <img src="images/pinon-master.jpg" alt="PiNON Bar マスター" loading="lazy">
+        </div>
+        <div class="master-text reveal reveal-d1">
+          <h3>「いらっしゃい」<span class="sm">の</span>一言<span class="sm">で、</span><br>肩<span class="sm">の</span>力<span class="sm">が</span>抜<span class="sm">ける。</span></h3>
+          <p>大名の路地裏で16年。常連もはじめての人も、変わらない笑顔で迎えてくれるマスターがいる。</p>
+          <p>気取らない空気感、自然と生まれる会話。「また来たくなる」理由は、この人柄にある。</p>
         </div>
       </div>
     </div>
