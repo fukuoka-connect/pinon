@@ -97,13 +97,15 @@
       backdrop-filter: blur(10px);
     }
     .nav-logo {
-      font-family: var(--font-kana);
-      font-size: 1.1rem;
-      letter-spacing: 0.25em;
-      color: var(--tan);
       text-decoration: none;
       flex-shrink: 0;
       margin-right: auto;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: auto;
     }
     .nav-links {
       display: flex; gap: 28px;
@@ -328,13 +330,13 @@
     }
 
     .sb-logo {
-      font-family: var(--font-kana);
-      font-size: 2.4rem;
-      letter-spacing: 0.2em;
-      color: var(--tan);
       margin-bottom: 4px;
       line-height: 1.2;
-      text-shadow: 0 0 40px rgba(200,169,110,0.4);
+    }
+    .sb-logo img {
+      height: 80px;
+      width: auto;
+      filter: drop-shadow(0 0 40px rgba(200,169,110,0.4));
     }
     .sb-sub {
       font-family: var(--font-latin);
@@ -992,11 +994,13 @@
     }
 
     .footer-logo {
-      font-family: var(--font-kana);
-      font-size: 1.2rem;
-      letter-spacing: 0.22em;
-      color: var(--tan);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo img {
+      height: 40px;
+      width: auto;
     }
 
     .footer-nav {
@@ -1091,7 +1095,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">ピノンバー</a>
+    <a href="#" class="nav-logo"><img src="images/pinon-logo.jpg" alt="PiNON Bar"></a>
     <div class="nav-links">
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
@@ -1135,7 +1139,7 @@
 
       <div class="hero-signboard hero-fade d4">
         <div class="signboard-inner">
-          <div class="sb-logo">PiNON</div>
+          <div class="sb-logo"><img src="images/pinon-logo.jpg" alt="PiNON Bar"></div>
           <div class="sb-sub">Bar — Since 2010</div>
           <div class="sb-divider"></div>
           <div class="sb-info-row">
@@ -1405,7 +1409,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">PiNON Bar</a>
+    <a href="#" class="footer-logo"><img src="images/pinon-logo.jpg" alt="PiNON Bar"></a>
     <nav class="footer-nav">
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
