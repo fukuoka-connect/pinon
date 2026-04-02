@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <meta name="google-site-verification" content="la_6IGFOXHrX7_Azu1HLkg10JC-jciXeFN9VLZZ9hBg" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1B068MZP9"></script>
@@ -828,6 +829,7 @@
     }
     .info-table a { color: var(--lantern); text-decoration: none; transition: color 0.3s; }
     .info-table a:hover { color: var(--cream); }
+    .info-table a[href^="tel:"] { color: var(--lantern); -webkit-text-fill-color: var(--lantern); }
 
     /* アクセス右カラム */
     .access-card {
