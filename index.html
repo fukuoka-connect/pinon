@@ -803,8 +803,8 @@
       line-height: 1.9;
       color: var(--muted);
     }
-    .info-table a { color: var(--tan); text-decoration: none; }
-    .info-table a:hover { color: var(--lantern); }
+    .info-table a { color: var(--lantern); text-decoration: none; transition: color 0.3s; }
+    .info-table a:hover { color: var(--cream); }
 
     /* アクセス右カラム */
     .access-card {
@@ -862,8 +862,8 @@
     .btn-map {
       display: block;
       padding: 14px 28px;
-      border: 1px solid rgba(200,169,110,0.3);
-      color: var(--tan);
+      border: 1px solid rgba(232,151,58,0.4);
+      color: var(--lantern);
       font-family: var(--font-mincho);
       font-size: 0.8rem;
       letter-spacing: 0.2em;
@@ -872,8 +872,9 @@
       transition: all 0.3s;
     }
     .btn-map:hover {
-      background: rgba(200,169,110,0.08);
-      border-color: var(--tan);
+      background: rgba(232,151,58,0.1);
+      border-color: var(--lantern);
+      color: var(--cream);
     }
 
     /* ══════════════════════════════
