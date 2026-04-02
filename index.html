@@ -601,6 +601,58 @@
     }
 
     /* ══════════════════════════════
+       SEASONAL MENU
+    ══════════════════════════════ */
+    #seasonal { background: var(--warm); }
+    .seasonal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .seasonal-card {
+      background: var(--bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(200,169,110,0.15);
+    }
+    .seasonal-card img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+    }
+    .seasonal-card-body {
+      padding: 20px;
+    }
+    .seasonal-card-tag {
+      font-family: var(--font-latin);
+      font-style: italic;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--lantern);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .seasonal-card-name {
+      font-family: var(--font-kaisei);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .seasonal-card-price {
+      font-family: var(--font-latin);
+      font-size: 1.1rem;
+      color: var(--tan);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 1024px) {
+      .seasonal-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    }
+
+    /* ══════════════════════════════
        ATMOSPHERE — 空間の記憶
     ══════════════════════════════ */
     #atmosphere { background: var(--bg); }
@@ -1263,6 +1315,43 @@
           <span class="feat-num">参</span>
           <h3>ノーチャージ<span class="sm">で</span>気軽<span class="sm">に</span></h3>
           <p>チャージなし。一人でも、誰かと一緒でも。小さな空間だからこそ生まれる温度感の中で、自分だけのお酒を見つけてほしい。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SEASONAL MENU ══ -->
+  <section id="seasonal">
+    <div class="section-wrap">
+      <span class="sec-label reveal">Seasonal Menu</span>
+      <h2 class="reveal" style="font-family:var(--font-kaisei);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--cream);line-height:1.4;margin-bottom:8px;">
+        季節<span class="sm">の</span>おすすめ
+      </h2>
+      <p class="reveal" style="font-size:0.82rem;color:var(--muted);line-height:1.8;">九州の旬を、一杯に閉じ込めて。</p>
+      <div class="seasonal-grid">
+        <div class="seasonal-card reveal">
+          <img src="images/seasonal-strawberry.jpg" alt="糸島産あまおう苺のジントニック" loading="lazy">
+          <div class="seasonal-card-body">
+            <span class="seasonal-card-tag">Seasonal Cocktail</span>
+            <p class="seasonal-card-name">糸島産 あまおう苺<span class="sm">の</span><br>ジントニック</p>
+            <p class="seasonal-card-price">¥1,200</p>
+          </div>
+        </div>
+        <div class="seasonal-card reveal">
+          <img src="images/seasonal-amanatsu.jpg" alt="熊本産甘夏のソルティドッグ" loading="lazy">
+          <div class="seasonal-card-body">
+            <span class="seasonal-card-tag">Seasonal Cocktail</span>
+            <p class="seasonal-card-name">熊本産 甘夏<span class="sm">の</span><br>ソルティドッグ</p>
+            <p class="seasonal-card-price">¥1,200</p>
+          </div>
+        </div>
+        <div class="seasonal-card reveal">
+          <img src="images/seasonal-pasta.jpg" alt="菜の花とトマトのオイルボロネーゼ" loading="lazy">
+          <div class="seasonal-card-body">
+            <span class="seasonal-card-tag">Recommend Pasta</span>
+            <p class="seasonal-card-name">菜の花<span class="sm">と</span>トマト<span class="sm">の</span><br>オイルボロネーゼ</p>
+            <p class="seasonal-card-price">¥1,200</p>
+          </div>
         </div>
       </div>
     </div>
