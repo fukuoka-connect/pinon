@@ -27,11 +27,12 @@
   <meta name="twitter:description" content="路地裏の灯りを、知っていますか。大名1-8-5 養巴コープ106。Open 20:00〜">
   <meta name="twitter:image" content="https://fukuoka-connect.github.io/pinon/images/ogp.jpg">
   <link rel="canonical" href="https://fukuoka-connect.github.io/pinon/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>">
   <title>PiNON Bar｜福岡・大名の隠れ家バー</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&family=Shippori+Mincho:wght@400;500;600;700&family=Kaisei+Tokumin:wght@400;500;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Kaisei+Tokumin:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,12 +54,10 @@
       --neon-teal: #5ecfbe;
       --neon-dim:  rgba(94,207,190,0.15);
 
-      --font-kana:    'Zen Antique Soft', serif;
-      --font-mincho:  'Shippori Mincho', serif;
+      --font-main:    'Noto Sans JP', sans-serif;
       --font-kaisei:  'Kaisei Tokumin', serif;
-      --font-latin:   'Crimson Pro', serif;
 
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease: cubic-bezier(.25,.46,.45,.94);
     }
 
     html { scroll-behavior: smooth; }
@@ -66,9 +65,10 @@
     body {
       background: var(--bg);
       color: var(--cream);
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-weight: 400;
       line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
@@ -106,7 +106,7 @@
       backdrop-filter: blur(10px);
     }
     .nav-logo {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 1.1rem;
       letter-spacing: 0.25em;
       color: var(--tan);
@@ -119,17 +119,17 @@
       margin-right: 28px;
     }
     .nav-links a {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       color: var(--dim);
       text-decoration: none;
       white-space: nowrap;
-      transition: color 0.3s;
+      transition: color 0.22s var(--ease);
     }
-    .nav-links a:hover { color: var(--tan); }
+    .nav-links a:hover { color: var(--tan); transition: color 0.22s var(--ease); }
     .nav-open {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.75rem;
       letter-spacing: 0.12em;
@@ -139,9 +139,9 @@
       text-decoration: none;
       flex-shrink: 0;
       white-space: nowrap;
-      transition: all 0.3s;
+      transition: all 0.48s var(--ease);
     }
-    .nav-open:hover { background: rgba(232,151,58,0.1); }
+    .nav-open:hover { background: rgba(232,151,58,0.1); transition: all 0.22s var(--ease); }
 
     /* Hamburger */
     .nav-hamburger {
@@ -153,7 +153,7 @@
     .nav-hamburger span {
       display: block; width: 22px; height: 1.5px;
       background: var(--tan);
-      transition: all 0.3s;
+      transition: all 0.22s var(--ease);
     }
     .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
     .nav-hamburger.active span:nth-child(2) { opacity: 0; }
@@ -172,14 +172,14 @@
     }
     .nav-drawer.open { display: flex; }
     .nav-drawer a {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 1.1rem;
       letter-spacing: 0.25em;
       color: var(--dim);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.48s var(--ease);
     }
-    .nav-drawer a:hover { color: var(--tan); }
+    .nav-drawer a:hover { color: var(--tan); transition: color 0.22s var(--ease); }
 
     /* ══════════════════════════════
        HERO — 路地の入口
@@ -279,7 +279,7 @@
     }
 
     .hero-eyebrow {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.9rem;
       letter-spacing: 0.18em;
@@ -307,7 +307,7 @@
     }
 
     .hero-desc {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.9rem;
       line-height: 2.2;
       color: var(--muted);
@@ -338,7 +338,7 @@
     }
 
     .sb-logo {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 2.4rem;
       letter-spacing: 0.2em;
       color: var(--tan);
@@ -347,7 +347,7 @@
       text-shadow: 0 0 40px rgba(200,169,110,0.4);
     }
     .sb-sub {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 1rem;
       letter-spacing: 0.18em;
@@ -368,7 +368,7 @@
       margin-bottom: 16px;
     }
     .sb-label {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       color: var(--dim);
@@ -398,9 +398,9 @@
       text-decoration: none;
       text-align: center;
       font-weight: 700;
-      transition: filter 0.3s, transform 0.2s;
+      transition: all 0.48s var(--ease);
     }
-    .sb-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .sb-cta:hover { filter: brightness(1.1); transform: translateY(-1px); transition: all 0.22s var(--ease); }
 
     .hero-scroll {
       position: absolute;
@@ -411,7 +411,7 @@
       animation: fadeIn 1s ease 2s forwards;
     }
     .hero-scroll span {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.7rem;
       letter-spacing: 0.25em;
@@ -444,7 +444,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.8rem;
       letter-spacing: 0.22em;
@@ -509,7 +509,7 @@
     }
 
     .map-title {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 0.8rem;
       letter-spacing: 0.25em;
       color: var(--tan);
@@ -527,7 +527,7 @@
     }
 
     .map-pin-label {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       color: var(--cream);
@@ -568,7 +568,7 @@
       padding: 48px 36px;
       position: relative;
       overflow: hidden;
-      transition: background 0.4s;
+      transition: background 0.48s var(--ease);
     }
     .feat::after {
       content: '';
@@ -578,13 +578,13 @@
       background: linear-gradient(to right, var(--lantern2), var(--lantern));
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.5s var(--ease);
+      transition: transform 0.22s var(--ease);
     }
     .feat:hover { background: #342818; }
     .feat:hover::after { transform: scaleX(1); }
 
     .feat-num {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 4rem;
       line-height: 1;
@@ -634,7 +634,7 @@
       padding: 20px;
     }
     .seasonal-card-tag {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.62rem;
       letter-spacing: 0.2em;
@@ -651,7 +651,7 @@
       margin-bottom: 8px;
     }
     .seasonal-card-price {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-size: 1.1rem;
       color: var(--tan);
       letter-spacing: 0.05em;
@@ -727,7 +727,7 @@
     .atm-sub-body { padding: 28px 28px 32px; }
 
     .atm-sub-tag {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.65rem;
       letter-spacing: 0.25em;
@@ -810,7 +810,7 @@
     }
 
     .quote-deco {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 7rem;
       line-height: 0.6;
@@ -832,7 +832,7 @@
 
     blockquote cite {
       display: block;
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.78rem;
       letter-spacing: 0.28em;
@@ -870,7 +870,7 @@
     .info-table tr { border-bottom: 1px solid rgba(200,169,110,0.1); }
     .info-table th {
       padding: 16px 0;
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.68rem;
       letter-spacing: 0.2em;
       color: var(--lantern);
@@ -882,12 +882,12 @@
     }
     .info-table td {
       padding: 16px 0;
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.88rem;
       line-height: 1.9;
       color: var(--muted);
     }
-    .info-table a { color: var(--lantern); text-decoration: none; transition: color 0.3s; }
+    .info-table a { color: var(--lantern); text-decoration: none; transition: color 0.48s var(--ease); }
     .info-table a:hover { color: var(--cream); }
     .info-table a[href^="tel:"] { color: var(--lantern); -webkit-text-fill-color: var(--lantern); }
 
@@ -906,7 +906,7 @@
     }
 
     .access-neon {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 0.75rem;
       letter-spacing: 0.2em;
       color: var(--neon-teal);
@@ -949,12 +949,12 @@
       padding: 14px 28px;
       border: 1px solid rgba(232,151,58,0.4);
       color: var(--lantern);
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-decoration: none;
       text-align: center;
-      transition: all 0.3s;
+      transition: all 0.48s var(--ease);
     }
     .btn-map:hover {
       background: rgba(232,151,58,0.1);
@@ -984,7 +984,7 @@
 
     /* 大きな背景文字 */
     .cta-bg-text {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: clamp(5rem, 18vw, 18rem);
       line-height: 0.8;
       color: transparent;
@@ -1009,7 +1009,7 @@
     }
 
     #cta .cta-sub {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.88rem;
       letter-spacing: 0.18em;
       color: var(--muted);
@@ -1033,9 +1033,9 @@
       letter-spacing: 0.22em;
       font-weight: 700;
       text-decoration: none;
-      transition: filter 0.3s, transform 0.2s;
+      transition: all 0.48s var(--ease);
     }
-    .btn-primary-warm:hover { filter: brightness(1.08); transform: translateY(-2px); }
+    .btn-primary-warm:hover { filter: brightness(1.08); transform: translateY(-2px); transition: all 0.22s var(--ease); }
 
     .btn-secondary {
       display: inline-block;
@@ -1046,9 +1046,9 @@
       font-size: 0.9rem;
       letter-spacing: 0.22em;
       text-decoration: none;
-      transition: all 0.3s;
+      transition: all 0.48s var(--ease);
     }
-    .btn-secondary:hover { background: rgba(200,169,110,0.07); border-color: var(--tan); }
+    .btn-secondary:hover { background: rgba(200,169,110,0.07); border-color: var(--tan); transition: all 0.22s var(--ease); }
 
     .cta-hours {
       margin-top: 56px;
@@ -1060,7 +1060,7 @@
     }
     .ch-item { text-align: center; }
     .ch-label {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-style: italic;
       font-size: 0.65rem;
       letter-spacing: 0.25em;
@@ -1090,7 +1090,7 @@
     }
 
     .footer-logo {
-      font-family: var(--font-kana);
+      font-family: var(--font-kaisei);
       font-size: 1.2rem;
       letter-spacing: 0.22em;
       color: var(--tan);
@@ -1101,17 +1101,17 @@
       display: flex; gap: 28px;
     }
     .footer-nav a {
-      font-family: var(--font-mincho);
+      font-family: var(--font-main);
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       color: var(--dim);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.48s var(--ease);
     }
-    .footer-nav a:hover { color: var(--tan); }
+    .footer-nav a:hover { color: var(--tan); transition: color 0.22s var(--ease); }
 
     .footer-copy {
-      font-family: var(--font-latin);
+      font-family: var(--font-kaisei);
       font-size: 0.65rem;
       letter-spacing: 0.15em;
       color: rgba(200,169,110,0.25);
@@ -1184,6 +1184,39 @@
       .footer-nav { flex-wrap: wrap; justify-content: center; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "PiNON Bar（ピノンバー）",
+    "image": "https://fukuoka-connect.github.io/pinon/images/pinon-counter.jpg",
+    "url": "https://fukuoka-connect.github.io/pinon/",
+    "telephone": "092-732-7510",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "大名1-8-5 養巴コープ 106",
+      "addressLocality": "福岡市中央区",
+      "addressRegion": "福岡県",
+      "postalCode": "810-0041",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.586616,
+      "longitude": 130.392466
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "20:00",
+      "closes": "02:00"
+    },
+    "priceRange": "¥1,000〜",
+    "servesCuisine": "カクテル・ウイスキー・パスタ",
+    "description": "福岡市大名の隠れ家バー。2010年開業、路地裏のレトロアパート1階奥。カウンター6席、テーブル2卓。ノーチャージ。",
+    "sameAs": ["https://www.instagram.com/pinonbar_daimyo/"]
+  }
+  </script>
 </head>
 <body>
 
@@ -1486,7 +1519,7 @@
             </tbody>
           </table>
           <div class="reveal reveal-d1" style="margin-top:32px;">
-            <p style="font-family:var(--font-latin);font-style:italic;font-size:0.75rem;letter-spacing:0.2em;color:var(--lantern);margin-bottom:12px;">Calendar</p>
+            <p style="font-family:var(--font-kaisei);font-style:italic;font-size:0.75rem;letter-spacing:0.2em;color:var(--lantern);margin-bottom:12px;">Calendar</p>
             <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(200,169,110,0.15);">
               <iframe src="https://calendar.google.com/calendar/embed?src=b6c972f127575a57ffba832e5300a41b904f04ae4ba920b86477cb52d69cbe58%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:400px;display:block;" frameborder="0" scrolling="no" loading="lazy"></iframe>
             </div>
@@ -1584,6 +1617,19 @@
       navEl.style.background = window.scrollY > 60
         ? 'rgba(10,8,5,0.97)'
         : 'rgba(10,8,5,0.92)';
+    });
+
+    // GA4 CTA click tracking
+    document.querySelectorAll('.sb-cta, .btn-primary-warm, .btn-secondary, .btn-map').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var label = this.textContent.trim();
+        var dest = this.href || '';
+        gtag('event', 'cta_click', {
+          event_category: 'CTA',
+          event_label: label,
+          link_url: dest
+        });
+      });
     });
 
     // Mobile drawer
