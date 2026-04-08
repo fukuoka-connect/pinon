@@ -13,10 +13,10 @@
     gtag('js', new Date());
     gtag('config', 'G-C1B068MZP9');
   </script>
-  <meta name="description" content="PiNON Bar｜福岡市大名の隠れ家バー。レトロアパートの一室、路地裏の灯り。大名1-8-5 養巴コープ106。Open 20:00〜">
+  <meta name="description" content="PiNON Bar（ピノンバー）は福岡市大名の隠れ家バー。天神から徒歩圏、路地裏のレトロアパート1階奥。ノーチャージでカウンター6席。お一人様も歓迎。Open 20:00〜 日曜定休。大名1-8-5 養巴コープ106。">
   <meta name="keywords" content="PiNON Bar,ピノンバー,福岡バー,大名バー,隠れ家バー,養巴コープ,福岡市中央区,ヨウハコープ,福岡夜遊び">
   <meta property="og:title" content="PiNON Bar｜福岡・大名の隠れ家バー">
-  <meta property="og:description" content="路地裏の灯りを、知っていますか。大名1-8-5 養巴コープ106。Open 20:00〜">
+  <meta property="og:description" content="PiNON Bar（ピノンバー）は福岡市大名の隠れ家バー。天神から徒歩圏、路地裏のレトロアパート1階奥。ノーチャージでカウンター6席。お一人様も歓迎。Open 20:00〜 日曜定休。大名1-8-5 養巴コープ106。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fukuoka-connect.github.io/pinon/">
   <meta property="og:image" content="https://fukuoka-connect.github.io/pinon/images/ogp.jpg">
@@ -24,7 +24,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PiNON Bar｜福岡・大名の隠れ家バー">
-  <meta name="twitter:description" content="路地裏の灯りを、知っていますか。大名1-8-5 養巴コープ106。Open 20:00〜">
+  <meta name="twitter:description" content="PiNON Bar（ピノンバー）は福岡市大名の隠れ家バー。天神から徒歩圏、路地裏のレトロアパート1階奥。ノーチャージでカウンター6席。お一人様も歓迎。Open 20:00〜 日曜定休。大名1-8-5 養巴コープ106。">
   <meta name="twitter:image" content="https://fukuoka-connect.github.io/pinon/images/ogp.jpg">
   <link rel="canonical" href="https://fukuoka-connect.github.io/pinon/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>">
@@ -1183,6 +1183,64 @@
       footer { padding: 32px 24px; flex-direction: column; align-items: center; text-align: center; }
       .footer-nav { flex-wrap: wrap; justify-content: center; }
     }
+
+    /* ══════════════════════════════
+       MOBILE FIXED FOOTER CTA
+    ══════════════════════════════ */
+    .mobile-footer-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 990;
+      background: rgba(14,11,8,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(200,169,110,0.2);
+      padding: 10px 16px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.48s var(--ease), transform 0.48s var(--ease);
+    }
+    .mobile-footer-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 1024px) {
+      .mobile-footer-cta { display: flex; }
+      body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+    }
+    .mfc-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 0;
+      font-family: var(--font-kaisei);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.22s var(--ease);
+    }
+    .mfc-btn--tel {
+      background: linear-gradient(135deg, var(--lantern2), var(--lantern));
+      color: var(--bg3);
+    }
+    .mfc-btn--tel:hover { filter: brightness(1.1); }
+    .mfc-btn--map {
+      background: transparent;
+      border: 1px solid rgba(200,169,110,0.4);
+      color: var(--tan);
+    }
+    .mfc-btn--map:hover { background: rgba(200,169,110,0.08); }
+    .mfc-btn svg {
+      width: 16px; height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -1215,6 +1273,38 @@
     "servesCuisine": "カクテル・ウイスキー・パスタ",
     "description": "福岡市大名の隠れ家バー。2010年開業、路地裏のレトロアパート1階奥。カウンター6席、テーブル2卓。ノーチャージ。",
     "sameAs": ["https://www.instagram.com/pinonbar_daimyo/"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "PiNON Barにチャージはかかりますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ、ノーチャージです。ドリンク代のみでお楽しみいただけます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "一人でも入れますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "お一人様大歓迎です。カウンター6席の小さなバーなので、一人飲みのお客様も多くいらっしゃいます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "予約は必要ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "予約なしでお越しいただけます。カウンター6席のため、満席の場合はお待ちいただくことがあります。お電話（092-732-7510）でお気軽にご確認ください。"
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -1604,6 +1694,18 @@
     <span class="footer-copy">© 2026 PiNON Bar · 福岡市大名</span>
   </footer>
 
+  <!-- MOBILE FIXED FOOTER CTA -->
+  <div class="mobile-footer-cta" id="mobileFooterCta">
+    <a href="tel:0927327510" class="mfc-btn mfc-btn--tel" onclick="if(typeof gtag!=='undefined')gtag('event','cta_click',{event_category:'engagement',event_label:'mobile_footer_tel'})">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      電話する
+    </a>
+    <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="mfc-btn mfc-btn--map" onclick="if(typeof gtag!=='undefined')gtag('event','cta_click',{event_category:'engagement',event_label:'mobile_footer_map'})">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+      地図を見る
+    </a>
+  </div>
+
   <script>
     // Scroll Reveal
     const obs = new IntersectionObserver(entries => {
@@ -1645,6 +1747,47 @@
       document.querySelector('.nav-hamburger').classList.remove('active');
       document.body.style.overflow = '';
     }
+
+    // ── GA4: scroll_depth (25/50/75/100%) ──
+    (function() {
+      var depths = [25, 50, 75, 100];
+      var reached = {};
+      window.addEventListener('scroll', function() {
+        var pct = Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100);
+        depths.forEach(function(d) {
+          if (pct >= d && !reached[d]) {
+            reached[d] = true;
+            if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%' });
+          }
+        });
+      }, { passive: true });
+    })();
+
+    // ── GA4: section_view (各セクション表示計測) ──
+    (function() {
+      var sectionObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            if (typeof gtag !== 'undefined') gtag('event', 'section_view', { event_category: 'engagement', event_label: e.target.id });
+            sectionObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('section[id]').forEach(function(s) { sectionObs.observe(s); });
+    })();
+
+    // ── Mobile Fixed Footer CTA: show after 300px scroll ──
+    (function() {
+      var mfc = document.getElementById('mobileFooterCta');
+      if (!mfc) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          mfc.classList.add('visible');
+        } else {
+          mfc.classList.remove('visible');
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
