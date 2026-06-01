@@ -48,7 +48,7 @@
       --tan-glow:  rgba(200,169,110,0.07);
       --cream:     #f0e4cc;
       --muted:     rgba(240,228,204,0.55);
-      --dim:       rgba(240,228,204,0.3);
+      --dim:       rgba(240,228,204,0.6);
       --lantern:   #e8973a;
       --lantern2:  #d4742a;
       --neon-teal: #5ecfbe;
@@ -1338,7 +1338,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">PiNON Bar</a>
+    <a href="#hero" class="nav-logo">PiNON Bar</a>
     <div class="nav-links">
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
@@ -1387,22 +1387,23 @@
           <div class="sb-sub">— Since 2010</div>
           <div class="sb-divider"></div>
           <div class="sb-info-row">
-            <span class="sb-label">OPEN</span>
+            <span class="sb-label">Open</span>
             <span class="sb-val open">20:00〜</span>
           </div>
           <div class="sb-info-row">
-            <span class="sb-label">CLOSE</span>
+            <span class="sb-label">Close</span>
             <span class="sb-val">2:00 くらい</span>
           </div>
           <div class="sb-info-row">
-            <span class="sb-label">CHARGE</span>
+            <span class="sb-label">Charge</span>
             <span class="sb-val">なし</span>
           </div>
           <div class="sb-info-row">
             <span class="sb-label">休み</span>
             <span class="sb-val">日曜日</span>
           </div>
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5" target="_blank" rel="noopener" class="sb-cta" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'hero_map'})">
+          <!-- ヒーローの情報カード内CTA：スペース上「場所を確認する」のまま短く維持 -->
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="sb-cta" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'hero_map'})">
             場所を確認する
           </a>
         </div>
@@ -1689,7 +1690,7 @@
             そこがPiNON Barです。
           </p>
           <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-map" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'info_map'})">
-            Google Map で確認する
+            Googleマップで道順を見る
           </a>
         </div>
       </div>
@@ -1712,7 +1713,8 @@
         <p class="cta-sub reveal reveal-d1">大名で過ごす、特別な夜を。養巴コープ 1階 · Open 20:00〜 · No Charge</p>
         <p class="reveal reveal-d1" style="font-size:.8rem;color:var(--tan);opacity:.7;margin-top:8px;font-style:italic;letter-spacing:.05em;">カウンター6席の小さなバー。満席の夜も少なくありません。</p>
         <div class="cta-btn-group reveal reveal-d2">
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-primary-warm" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_map'})">地図を開いて向かう</a>
+          <a href="tel:0927327510" class="btn-primary-warm" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_tel'})">📞 空席を電話で確認</a>
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_map'})">Googleマップで道順を見る</a>
           <a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_instagram'})">Instagram を見る</a>
         </div>
         <div class="cta-hours reveal reveal-d3">
@@ -1739,7 +1741,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">PiNON Bar</a>
+    <a href="#hero" class="footer-logo">PiNON Bar</a>
     <nav class="footer-nav">
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
@@ -1756,6 +1758,7 @@
       <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
       電話する
     </a>
+    <!-- モバイル下部固定バー：ボタン横幅が狭いため「地図を見る」短縮表記を維持 -->
     <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="mfc-btn mfc-btn--map" onclick="if(typeof gtag!=='undefined')gtag('event','cta_click',{event_category:'engagement',event_label:'mobile_footer_map'})">
       <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
       地図を見る
