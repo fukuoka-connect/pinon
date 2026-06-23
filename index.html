@@ -631,9 +631,12 @@
     #seasonal { background: var(--warm); }
     .seasonal-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       margin-top: 48px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .seasonal-card {
       background: var(--bg);
@@ -1479,16 +1482,6 @@
       </h2>
       <p class="reveal" style="font-size:0.82rem;color:var(--muted);line-height:1.8;">九州の旬を、一杯に閉じ込めて。</p>
       <div class="seasonal-grid">
-        <div class="seasonal-card reveal">
-          <picture>
-            <img src="images/seasonal-kiwi.jpg" alt="フレッシュキウイのカクテル" loading="lazy">
-          </picture>
-          <div class="seasonal-card-body">
-            <span class="seasonal-card-tag">Seasonal Cocktail</span>
-            <p class="seasonal-card-name">フレッシュキウイ<span class="sm">の</span><br>カクテル</p>
-            <p class="seasonal-card-price">¥1,200</p>
-          </div>
-        </div>
         <div class="seasonal-card reveal">
           <picture>
             <source srcset="images/seasonal-suika.webp" type="image/webp">
