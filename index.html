@@ -478,7 +478,7 @@
     /* ══════════════════════════════
        STORY — 路地裏の物語
     ══════════════════════════════ */
-    #story { background: var(--bg); }
+    #story { background: var(--bg); border-top: 1px solid rgba(200,169,110,0.08); }
 
     .story-grid {
       display: grid;
@@ -772,7 +772,7 @@
     /* ══════════════════════════════
        MASTER — 店主
     ══════════════════════════════ */
-    #master { background: var(--bg2); }
+    #master { background: var(--bg2); border-top: 1px solid rgba(200,169,110,0.08); }
 
     .master-layout {
       display: grid;
@@ -987,6 +987,7 @@
     ══════════════════════════════ */
     #cta {
       background: var(--bg3);
+      border-top: 1px solid rgba(200,169,110,0.08);
       position: relative;
       overflow: hidden;
     }
@@ -1343,10 +1344,11 @@
   <nav>
     <a href="#hero" class="nav-logo">PiNON Bar</a>
     <div class="nav-links">
+      <a href="#info">アクセス</a>
+      <a href="#seasonal">メニュー</a>
+      <a href="#atmosphere">空間</a>
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
-      <a href="#atmosphere">空間</a>
-      <a href="#info">アクセス</a>
     </div>
     <a href="#info" class="nav-open">Open 20:00 →</a>
     <div class="nav-hamburger" onclick="toggleDrawer()">
@@ -1354,10 +1356,11 @@
     </div>
   </nav>
   <div class="nav-drawer" id="navDrawer">
+    <a href="#info" onclick="closeDrawer()">アクセス</a>
+    <a href="#seasonal" onclick="closeDrawer()">メニュー</a>
+    <a href="#atmosphere" onclick="closeDrawer()">空間</a>
     <a href="#story" onclick="closeDrawer()">物語</a>
     <a href="#features" onclick="closeDrawer()">特徴</a>
-    <a href="#atmosphere" onclick="closeDrawer()">空間</a>
-    <a href="#info" onclick="closeDrawer()">アクセス</a>
     <a href="#info" onclick="closeDrawer()" style="color:var(--lantern);font-style:italic;">Open 20:00 →</a>
   </div>
 
@@ -1419,56 +1422,90 @@
     </div>
   </section>
 
-  <!-- ══ STORY ══ -->
-  <section id="story">
+  <!-- ══ INFO ══ -->
+  <section id="info">
     <div class="section-wrap">
-      <span class="sec-label reveal">The Story</span>
-      <div class="story-grid">
-        <div class="story-body">
+      <span class="sec-label reveal">Info & Access</span>
+      <div class="info-layout">
+        <div>
           <h2 class="reveal">
-            大名<span class="sm">の</span>路地裏<span class="sm">に、</span><br>
-            16年目<span class="sm">の</span>隠れ家バー<span class="sm">が</span><br>
-            灯<span class="sm">り</span>続<span class="sm">ける。</span>
+            大名<span class="sm">の</span>路地裏<span class="sm">への</span><br>
+            アクセス<span class="sm">と</span>営業時間<span class="sm">。</span>
           </h2>
-          <p class="reveal reveal-d1">
-            福岡市中央区大名。天神からほど近い、賑やかな街の一角に、ひっそりと佇むアパートがある。養巴コープ（ヨウハコープ）と呼ばれるそのレトロな建物の1階右奥、扉を開けると——そこはまるで森の中のような、別の世界だ。
-          </p>
-          <p class="reveal reveal-d2">
-            木を基調とした内装に、薄暗い間接照明。ずらりと並んだボトルと、笑顔のバーテンダー。カウンター6席、テーブル2卓。小さな空間だからこそ生まれる、ちょうどいい距離感がここにはある。
-          </p>
-          <p class="reveal reveal-d3">
-            お一人様も大歓迎。ノーチャージで、気兼ねなく扉を叩いてほしい。自分に合ったお酒を見つけ、心地よい時間を過ごしてみませんか。
-          </p>
+          <table class="info-table reveal reveal-d1">
+            <tbody>
+              <tr>
+                <th>店名</th>
+                <td>PiNON Bar（ピノンバー）</td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td>福岡市中央区大名1-8-5<br>養巴コープ 106<br>ヨウハコープ 1階右曲奥</td>
+              </tr>
+              <!-- TODO: 後藤さん確認 - 最寄り駅徒歩分数（赤坂駅 / 天神駅）が既存LPに無いため、松下さんに確認後に有効化してください
+              <tr>
+                <th>アクセス</th>
+                <td>福岡市営地下鉄空港線「赤坂駅」徒歩○分<br>「天神駅」徒歩○分</td>
+              </tr>
+              -->
+              <tr>
+                <th>営業時間</th>
+                <td>Open 20:00〜 Close 2:00 くらい</td>
+              </tr>
+              <tr>
+                <th>定休日</th>
+                <td>日曜日<br>（月曜祝日の場合は月曜休み）</td>
+              </tr>
+              <tr>
+                <th>席数</th>
+                <td>カウンター 6席 / テーブル 2卓</td>
+              </tr>
+              <tr>
+                <th>チャージ</th>
+                <td>なし</td>
+              </tr>
+              <tr>
+                <th>電話</th>
+                <td><a href="tel:0927327510" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'tel_call'})">092-732-7510</a></td>
+              </tr>
+              <tr>
+                <th>Instagram</th>
+                <td><a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener">@pinonbar_daimyo</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="reveal reveal-d1" style="margin-top:32px;">
+            <p style="font-family:var(--font-kaisei);font-style:italic;font-size:0.75rem;letter-spacing:0.2em;color:var(--lantern);margin-bottom:12px;">Calendar</p>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(200,169,110,0.15);">
+              <iframe src="https://calendar.google.com/calendar/embed?src=b6c972f127575a57ffba832e5300a41b904f04ae4ba920b86477cb52d69cbe58%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:400px;display:block;" frameborder="0" scrolling="no" loading="lazy"></iframe>
+            </div>
+          </div>
         </div>
 
+        <div class="access-card reveal reveal-d2">
+          <div class="access-neon">
+            <span class="neon-dot"></span>
+            OPEN TONIGHT
+          </div>
+          <div class="access-address">
+            福岡市中央区<br>
+            大名 1-8-5<br>
+            養巴コープ 1階
+          </div>
+          <p class="access-how">
+            養巴コープに入ったら、1階を右奥へ。<br>
+            看板は小さいので、灯りを目印に。<br>
+            路地裏の奥に、その灯りが見えたら——<br>
+            そこがPiNON Barです。
+          </p>
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-map" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'info_map'})">
+            Googleマップで道順を見る
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ══ FEATURES ══ -->
-  <section id="features">
-    <div class="section-wrap">
-      <span class="sec-label reveal">Why PiNON Bar</span>
-      <h2 class="reveal">
-        大名<span class="sm">の</span>隠<span class="sm">れ</span>家<span class="sm">バーが、</span>16年<br>
-        愛<span class="sm">され</span>続<span class="sm">ける</span>理由<span class="sm">。</span>
-      </h2>
-      <div class="features-row">
-        <div class="feat reveal">
-          <span class="feat-num">壱</span>
-          <h3>路地裏<span class="sm">だから</span>生<span class="sm">まれる</span>非日常</h3>
-          <p>表通りから見えない、看板もない隠れ家。辿り着いた瞬間の高揚感は、ここでしか味わえない。知る人ぞ知る空間が、16年間変わらず待っている。</p>
-        </div>
-        <div class="feat reveal reveal-d1">
-          <span class="feat-num">弐</span>
-          <h3>木<span class="sm">と</span>光<span class="sm">の</span>森空間</h3>
-          <p>木を基調とした内装と薄暗い照明が生み出す、まるで森の中のような感覚。都会の真ん中で、最も遠くへ行ける場所がここにある。</p>
-        </div>
-        <div class="feat reveal reveal-d2">
-          <span class="feat-num">参</span>
-          <h3>ノーチャージ<span class="sm">で</span>気軽<span class="sm">に</span></h3>
-          <p>チャージなし。一人でも、誰かと一緒でも。小さな空間だからこそ生まれる温度感の中で、自分だけのお酒を見つけてほしい。</p>
-        </div>
+      <div class="reveal" style="margin-top:48px;border-radius:8px;overflow:hidden;border:1px solid rgba(200,169,110,0.15);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.7200964371823!2d130.39246599999998!3d33.586616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191872fc89b8f%3A0x370373e9e43646e5!2sPiNON%20Bar!5e0!3m2!1sja!2sjp!4v1775059668991!5m2!1sja!2sjp"
+          width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -1577,6 +1614,60 @@
     </div>
   </section>
 
+  <!-- ══ STORY ══ -->
+  <section id="story">
+    <div class="section-wrap">
+      <span class="sec-label reveal">The Story</span>
+      <div class="story-grid">
+        <div class="story-body">
+          <h2 class="reveal">
+            大名<span class="sm">の</span>路地裏<span class="sm">に、</span><br>
+            16年目<span class="sm">の</span>隠れ家バー<span class="sm">が</span><br>
+            灯<span class="sm">り</span>続<span class="sm">ける。</span>
+          </h2>
+          <p class="reveal reveal-d1">
+            福岡市中央区大名。天神からほど近い、賑やかな街の一角に、ひっそりと佇むアパートがある。養巴コープ（ヨウハコープ）と呼ばれるそのレトロな建物の1階右奥、扉を開けると——そこはまるで森の中のような、別の世界だ。
+          </p>
+          <p class="reveal reveal-d2">
+            木を基調とした内装に、薄暗い間接照明。ずらりと並んだボトルと、笑顔のバーテンダー。カウンター6席、テーブル2卓。小さな空間だからこそ生まれる、ちょうどいい距離感がここにはある。
+          </p>
+          <p class="reveal reveal-d3">
+            お一人様も大歓迎。ノーチャージで、気兼ねなく扉を叩いてほしい。自分に合ったお酒を見つけ、心地よい時間を過ごしてみませんか。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ══ -->
+  <section id="features">
+    <div class="section-wrap">
+      <span class="sec-label reveal">Why PiNON Bar</span>
+      <h2 class="reveal">
+        大名<span class="sm">の</span>隠<span class="sm">れ</span>家<span class="sm">バーが、</span>16年<br>
+        愛<span class="sm">され</span>続<span class="sm">ける</span>理由<span class="sm">。</span>
+      </h2>
+      <div class="features-row">
+        <div class="feat reveal">
+          <span class="feat-num">壱</span>
+          <h3>路地裏<span class="sm">だから</span>生<span class="sm">まれる</span>非日常</h3>
+          <p>表通りから見えない、看板もない隠れ家。辿り着いた瞬間の高揚感は、ここでしか味わえない。知る人ぞ知る空間が、16年間変わらず待っている。</p>
+        </div>
+        <div class="feat reveal reveal-d1">
+          <span class="feat-num">弐</span>
+          <h3>木<span class="sm">と</span>光<span class="sm">の</span>森空間</h3>
+          <p>木を基調とした内装と薄暗い照明が生み出す、まるで森の中のような感覚。都会の真ん中で、最も遠くへ行ける場所がここにある。</p>
+        </div>
+        <div class="feat reveal reveal-d2">
+          <span class="feat-num">参</span>
+          <h3>ノーチャージ<span class="sm">で</span>気軽<span class="sm">に</span></h3>
+          <p>チャージなし。一人でも、誰かと一緒でも。小さな空間だからこそ生まれる温度感の中で、自分だけのお酒を見つけてほしい。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ MASTER ══ -->
   <section id="master">
     <div class="section-wrap">
@@ -1613,94 +1704,6 @@
           ゆるり<span class="sm">と</span>した時間<span class="sm">を</span>過<span class="sm">ごして</span>いただきたい<span class="sm">。</span>
           <cite>— PiNON Bar Instagram より</cite>
         </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ INFO ══ -->
-  <section id="info">
-    <div class="section-wrap">
-      <span class="sec-label reveal">Info & Access</span>
-      <div class="info-layout">
-        <div>
-          <h2 class="reveal">
-            大名<span class="sm">の</span>路地裏<span class="sm">への</span><br>
-            アクセス<span class="sm">と</span>営業時間<span class="sm">。</span>
-          </h2>
-          <table class="info-table reveal reveal-d1">
-            <tbody>
-              <tr>
-                <th>店名</th>
-                <td>PiNON Bar（ピノンバー）</td>
-              </tr>
-              <tr>
-                <th>住所</th>
-                <td>福岡市中央区大名1-8-5<br>養巴コープ 106<br>ヨウハコープ 1階右曲奥</td>
-              </tr>
-              <!-- TODO: 後藤さん確認 - 最寄り駅徒歩分数（赤坂駅 / 天神駅）が既存LPに無いため、松下さんに確認後に有効化してください
-              <tr>
-                <th>アクセス</th>
-                <td>福岡市営地下鉄空港線「赤坂駅」徒歩○分<br>「天神駅」徒歩○分</td>
-              </tr>
-              -->
-              <tr>
-                <th>営業時間</th>
-                <td>Open 20:00〜 Close 2:00 くらい</td>
-              </tr>
-              <tr>
-                <th>定休日</th>
-                <td>日曜日<br>（月曜祝日の場合は月曜休み）</td>
-              </tr>
-              <tr>
-                <th>席数</th>
-                <td>カウンター 6席 / テーブル 2卓</td>
-              </tr>
-              <tr>
-                <th>チャージ</th>
-                <td>なし</td>
-              </tr>
-              <tr>
-                <th>電話</th>
-                <td><a href="tel:0927327510" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'tel_call'})">092-732-7510</a></td>
-              </tr>
-              <tr>
-                <th>Instagram</th>
-                <td><a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener">@pinonbar_daimyo</a></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="reveal reveal-d1" style="margin-top:32px;">
-            <p style="font-family:var(--font-kaisei);font-style:italic;font-size:0.75rem;letter-spacing:0.2em;color:var(--lantern);margin-bottom:12px;">Calendar</p>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(200,169,110,0.15);">
-              <iframe src="https://calendar.google.com/calendar/embed?src=b6c972f127575a57ffba832e5300a41b904f04ae4ba920b86477cb52d69cbe58%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:400px;display:block;" frameborder="0" scrolling="no" loading="lazy"></iframe>
-            </div>
-          </div>
-        </div>
-
-        <div class="access-card reveal reveal-d2">
-          <div class="access-neon">
-            <span class="neon-dot"></span>
-            OPEN TONIGHT
-          </div>
-          <div class="access-address">
-            福岡市中央区<br>
-            大名 1-8-5<br>
-            養巴コープ 1階
-          </div>
-          <p class="access-how">
-            養巴コープに入ったら、1階を右奥へ。<br>
-            看板は小さいので、灯りを目印に。<br>
-            路地裏の奥に、その灯りが見えたら——<br>
-            そこがPiNON Barです。
-          </p>
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-map" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'info_map'})">
-            Googleマップで道順を見る
-          </a>
-        </div>
-      </div>
-      <div class="reveal" style="margin-top:48px;border-radius:8px;overflow:hidden;border:1px solid rgba(200,169,110,0.15);">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.7200964371823!2d130.39246599999998!3d33.586616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191872fc89b8f%3A0x370373e9e43646e5!2sPiNON%20Bar!5e0!3m2!1sja!2sjp!4v1775059668991!5m2!1sja!2sjp"
-          width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -1747,10 +1750,11 @@
   <footer>
     <a href="#hero" class="footer-logo">PiNON Bar</a>
     <nav class="footer-nav">
+      <a href="#info">アクセス</a>
+      <a href="#seasonal">メニュー</a>
+      <a href="#atmosphere">空間</a>
       <a href="#story">物語</a>
       <a href="#features">特徴</a>
-      <a href="#atmosphere">空間</a>
-      <a href="#info">アクセス</a>
       <a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener">Instagram</a>
     </nav>
     <span class="footer-copy">© 2026 PiNON Bar · 福岡市大名</span>
