@@ -102,7 +102,7 @@
     /* ══════════════════════════════
        NAV
     ══════════════════════════════ */
-    nav {
+    body > nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 900;
       padding: 18px 48px;
@@ -147,6 +147,31 @@
       transition: all 0.48s var(--ease);
     }
     .nav-open:hover { background: rgba(232,151,58,0.1); transition: all 0.22s var(--ease); }
+
+    /* Language switch */
+    .lang-switch {
+      display: flex;
+      margin-right: 20px;
+      border: 1px solid rgba(200,169,110,0.3);
+      flex-shrink: 0;
+    }
+    .lang-switch button {
+      background: none; border: 0; cursor: pointer;
+      font-family: var(--font-main);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      padding: 6px 10px;
+      transition: color 0.22s var(--ease), background 0.22s var(--ease);
+    }
+    .lang-switch button + button { border-left: 1px solid rgba(200,169,110,0.3); }
+    .lang-switch button:hover { color: var(--tan); }
+    .lang-switch button[aria-pressed="true"] { color: var(--lantern); background: rgba(232,151,58,0.1); }
+    html[lang="ko"] {
+      --font-main:   'Noto Sans KR', 'Noto Sans JP', sans-serif;
+      --font-kaisei: 'Noto Serif KR', 'Kaisei Tokumin', serif;
+      word-break: keep-all;
+    }
 
     /* Hamburger */
     .nav-hamburger {
@@ -1173,10 +1198,12 @@
        MOBILE
     ══════════════════════════════ */
     @media (max-width: 1024px) {
-      nav { padding: 16px 24px; }
+      body > nav { padding: 16px 24px; }
       .nav-links { display: none !important; }
       .nav-open { display: none !important; }
       .nav-hamburger { display: flex !important; }
+      .lang-switch { margin-right: 16px; }
+      .lang-switch button { padding: 8px 10px; }
 
       .section-wrap { padding: 72px 24px; }
 
@@ -1346,11 +1373,16 @@
   <nav>
     <a href="#hero" class="nav-logo">PiNON Bar</a>
     <div class="nav-links">
-      <a href="#info">アクセス</a>
-      <a href="#seasonal">メニュー</a>
-      <a href="#atmosphere">空間</a>
-      <a href="#story">物語</a>
-      <a href="#features">特徴</a>
+      <a href="#info" data-i18n="nav.access">アクセス</a>
+      <a href="#seasonal" data-i18n="nav.menu">メニュー</a>
+      <a href="#atmosphere" data-i18n="nav.space">空間</a>
+      <a href="#story" data-i18n="nav.story">物語</a>
+      <a href="#features" data-i18n="nav.features">特徴</a>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="ja" aria-label="日本語" aria-pressed="true">JP</button>
+      <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      <button type="button" data-lang="ko" aria-label="한국어" aria-pressed="false">KR</button>
     </div>
     <a href="#info" class="nav-open">Open 20:00 →</a>
     <div class="nav-hamburger" onclick="toggleDrawer()">
@@ -1358,11 +1390,11 @@
     </div>
   </nav>
   <div class="nav-drawer" id="navDrawer">
-    <a href="#info" onclick="closeDrawer()">アクセス</a>
-    <a href="#seasonal" onclick="closeDrawer()">メニュー</a>
-    <a href="#atmosphere" onclick="closeDrawer()">空間</a>
-    <a href="#story" onclick="closeDrawer()">物語</a>
-    <a href="#features" onclick="closeDrawer()">特徴</a>
+    <a href="#info" onclick="closeDrawer()" data-i18n="nav.access">アクセス</a>
+    <a href="#seasonal" onclick="closeDrawer()" data-i18n="nav.menu">メニュー</a>
+    <a href="#atmosphere" onclick="closeDrawer()" data-i18n="nav.space">空間</a>
+    <a href="#story" onclick="closeDrawer()" data-i18n="nav.story">物語</a>
+    <a href="#features" onclick="closeDrawer()" data-i18n="nav.features">特徴</a>
     <a href="#info" onclick="closeDrawer()" style="color:var(--lantern);font-style:italic;">Open 20:00 →</a>
   </div>
 
@@ -1377,12 +1409,12 @@
     <div class="hero-content">
       <div class="hero-left-text">
         <p class="hero-eyebrow hero-fade d1">Fukuoka · Daimyo · Bar</p>
-        <h1 class="hero-fade d2 visually-hidden">PiNON Bar｜福岡・大名の隠れ家バー（ピノンバー）</h1>
-        <p class="hero-catch hero-fade d2" aria-hidden="true">
+        <h1 class="hero-fade d2 visually-hidden" data-i18n="hero.h1">PiNON Bar｜福岡・大名の隠れ家バー（ピノンバー）</h1>
+        <p class="hero-catch hero-fade d2" aria-hidden="true" data-i18n="hero.catch">
           路地裏<span class="sm">の</span>灯<span class="sm">り</span>を、<br>
           知<span class="sm">っていますか。</span>
         </p>
-        <p class="hero-desc hero-fade d3">
+        <p class="hero-desc hero-fade d3" data-i18n="hero.desc">
           大名の路地を入り、アパートの1階奥へ。<br>
           17年間、ひっそりと灯り続けてきた隠れ家バーがある。<br>
           今夜、その扉を開けてみませんか。
@@ -1400,18 +1432,18 @@
           </div>
           <div class="sb-info-row">
             <span class="sb-label">Close</span>
-            <span class="sb-val">2:00 くらい</span>
+            <span class="sb-val" data-i18n="sb.close">2:00 くらい</span>
           </div>
           <div class="sb-info-row">
             <span class="sb-label">Charge</span>
-            <span class="sb-val">なし</span>
+            <span class="sb-val" data-i18n="sb.charge">なし</span>
           </div>
           <div class="sb-info-row">
-            <span class="sb-label">休み</span>
-            <span class="sb-val">日曜日</span>
+            <span class="sb-label" data-i18n="sb.holidayLabel">休み</span>
+            <span class="sb-val" data-i18n="sb.holiday">日曜日</span>
           </div>
           <!-- ヒーローの情報カード内CTA：スペース上「場所を確認する」のまま短く維持 -->
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="sb-cta" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'hero_map'})">
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="sb-cta" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'hero_map'})" data-i18n="hero.cta">
             場所を確認する
           </a>
         </div>
@@ -1430,19 +1462,19 @@
       <span class="sec-label reveal">Info & Access</span>
       <div class="info-layout">
         <div>
-          <h2 class="reveal">
+          <h2 class="reveal" data-i18n="info.h2">
             大名<span class="sm">の</span>路地裏<span class="sm">への</span><br>
             アクセス<span class="sm">と</span>営業時間<span class="sm">。</span>
           </h2>
           <table class="info-table reveal reveal-d1">
             <tbody>
               <tr>
-                <th>店名</th>
-                <td>PiNON Bar（ピノンバー）</td>
+                <th data-i18n="info.th.name">店名</th>
+                <td data-i18n="info.name">PiNON Bar（ピノンバー）</td>
               </tr>
               <tr>
-                <th>住所</th>
-                <td>福岡市中央区大名1-8-5<br>養巴コープ 106<br>ヨウハコープ 1階右曲奥</td>
+                <th data-i18n="info.th.address">住所</th>
+                <td data-i18n="info.address">福岡市中央区大名1-8-5<br>養巴コープ 106<br>ヨウハコープ 1階右曲奥</td>
               </tr>
               <!-- TODO: 後藤さん確認 - 最寄り駅徒歩分数（赤坂駅 / 天神駅）が既存LPに無いため、松下さんに確認後に有効化してください
               <tr>
@@ -1451,23 +1483,23 @@
               </tr>
               -->
               <tr>
-                <th>営業時間</th>
-                <td>Open 20:00〜 Close 2:00 くらい</td>
+                <th data-i18n="info.th.hours">営業時間</th>
+                <td data-i18n="info.hours">Open 20:00〜 Close 2:00 くらい</td>
               </tr>
               <tr>
-                <th>定休日</th>
-                <td>日曜日<br>（月曜祝日の場合は月曜休み）</td>
+                <th data-i18n="info.th.holiday">定休日</th>
+                <td data-i18n="info.holiday">日曜日<br>（月曜祝日の場合は月曜休み）</td>
               </tr>
               <tr>
-                <th>席数</th>
-                <td>カウンター 6席 / テーブル 2卓</td>
+                <th data-i18n="info.th.seats">席数</th>
+                <td data-i18n="info.seats">カウンター 6席 / テーブル 2卓</td>
               </tr>
               <tr>
-                <th>チャージ</th>
-                <td>なし</td>
+                <th data-i18n="info.th.charge">チャージ</th>
+                <td data-i18n="info.charge">なし</td>
               </tr>
               <tr>
-                <th>電話</th>
+                <th data-i18n="info.th.tel">電話</th>
                 <td><a href="tel:0927327510" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'tel_call'})">092-732-7510</a></td>
               </tr>
               <tr>
@@ -1489,18 +1521,18 @@
             <span class="neon-dot"></span>
             OPEN TONIGHT
           </div>
-          <div class="access-address">
+          <div class="access-address" data-i18n="access.address">
             福岡市中央区<br>
             大名 1-8-5<br>
             養巴コープ 1階
           </div>
-          <p class="access-how">
+          <p class="access-how" data-i18n="access.how">
             養巴コープに入ったら、1階を右奥へ。<br>
             看板は小さいので、灯りを目印に。<br>
             路地裏の奥に、その灯りが見えたら——<br>
             そこがPiNON Barです。
           </p>
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-map" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'info_map'})">
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-map" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'info_map'})" data-i18n="btn.map">
             Googleマップで道順を見る
           </a>
         </div>
@@ -1516,41 +1548,41 @@
   <section id="seasonal">
     <div class="section-wrap">
       <span class="sec-label reveal">Seasonal Menu</span>
-      <h2 class="reveal" style="font-family:var(--font-kaisei);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--cream);line-height:1.4;margin-bottom:8px;">
+      <h2 class="reveal" style="font-family:var(--font-kaisei);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--cream);line-height:1.4;margin-bottom:8px;" data-i18n="seasonal.h2">
         季節<span class="sm">の</span>おすすめ
       </h2>
-      <p class="reveal" style="font-size:0.82rem;color:var(--muted);line-height:1.8;">九州の旬を、一杯に閉じ込めて。</p>
+      <p class="reveal" style="font-size:0.82rem;color:var(--muted);line-height:1.8;" data-i18n="seasonal.sub">九州の旬を、一杯に閉じ込めて。</p>
       <div class="seasonal-grid">
         <div class="seasonal-card reveal">
           <picture>
             <source srcset="images/seasonal-nashi.webp" type="image/webp">
-            <img src="images/seasonal-nashi.jpg" alt="熊本産秋梨のフレッシュカクテル" loading="lazy">
+            <img src="images/seasonal-nashi.jpg" alt="熊本産秋梨のフレッシュカクテル" data-i18n-alt="alt.nashi" loading="lazy">
           </picture>
           <div class="seasonal-card-body">
             <span class="seasonal-card-tag">Seasonal Cocktail</span>
-            <p class="seasonal-card-name">熊本産 秋梨<span class="sm">の</span><br>フレッシュカクテル</p>
+            <p class="seasonal-card-name" data-i18n="seasonal.nashi">熊本産 秋梨<span class="sm">の</span><br>フレッシュカクテル</p>
             <p class="seasonal-card-price">¥1,300</p>
           </div>
         </div>
         <div class="seasonal-card reveal">
           <picture>
             <source srcset="images/seasonal-kyoho.webp" type="image/webp">
-            <img src="images/seasonal-kyoho.jpg" alt="巨峰のジントニック" loading="lazy">
+            <img src="images/seasonal-kyoho.jpg" alt="巨峰のジントニック" data-i18n-alt="alt.kyoho" loading="lazy">
           </picture>
           <div class="seasonal-card-body">
             <span class="seasonal-card-tag">Seasonal Cocktail</span>
-            <p class="seasonal-card-name">巨峰<span class="sm">の</span><br>ジントニック</p>
+            <p class="seasonal-card-name" data-i18n="seasonal.kyoho">巨峰<span class="sm">の</span><br>ジントニック</p>
             <p class="seasonal-card-price">¥1,200</p>
           </div>
         </div>
         <div class="seasonal-card reveal">
           <picture>
             <source srcset="images/seasonal-pasta-nasu.webp" type="image/webp">
-            <img src="images/seasonal-pasta-nasu.jpg" alt="秋茄子と厚切りベーコンのトマトパスタ" loading="lazy">
+            <img src="images/seasonal-pasta-nasu.jpg" alt="秋茄子と厚切りベーコンのトマトパスタ" data-i18n-alt="alt.pasta" loading="lazy">
           </picture>
           <div class="seasonal-card-body">
             <span class="seasonal-card-tag">Recommend Pasta</span>
-            <p class="seasonal-card-name">秋茄子<span class="sm">と</span>厚切りベーコン<span class="sm">の</span><br>トマトパスタ</p>
+            <p class="seasonal-card-name" data-i18n="seasonal.pasta">秋茄子<span class="sm">と</span>厚切りベーコン<span class="sm">の</span><br>トマトパスタ</p>
             <p class="seasonal-card-price">¥1,200</p>
           </div>
         </div>
@@ -1562,7 +1594,7 @@
   <section id="atmosphere">
     <div class="section-wrap">
       <span class="sec-label reveal">Space & Atmosphere</span>
-      <h2 class="reveal">
+      <h2 class="reveal" data-i18n="atm.h2">
         カウンター<span class="sm">の</span>扉<span class="sm">を</span>開<span class="sm">けると、</span><br>
         時間<span class="sm">が</span>変<span class="sm">わる。</span>
       </h2>
@@ -1570,11 +1602,11 @@
       <div class="atm-main reveal">
         <picture>
           <source srcset="images/pinon-counter.webp" type="image/webp">
-          <img src="images/pinon-counter.jpg" alt="PiNON Bar 店内カウンター" loading="lazy">
+          <img src="images/pinon-counter.jpg" alt="PiNON Bar 店内カウンター" data-i18n-alt="alt.counter" loading="lazy">
         </picture>
         <div class="atm-main-overlay">
-          <h3>カウンター<span class="sm">の</span>むこうに、17年分<span class="sm">の</span>記憶<span class="sm">が</span>ある。</h3>
-          <p>ずらりと並んだボトルと笑顔のバーテンダー。この景色が、大名の路地裏に17年間あり続けた。</p>
+          <h3 data-i18n="atm.h3">カウンター<span class="sm">の</span>むこうに、17年分<span class="sm">の</span>記憶<span class="sm">が</span>ある。</h3>
+          <p data-i18n="atm.p">ずらりと並んだボトルと笑顔のバーテンダー。この景色が、大名の路地裏に17年間あり続けた。</p>
         </div>
       </div>
 
@@ -1582,34 +1614,34 @@
         <div class="atm-sub reveal">
           <picture>
             <source srcset="images/pinon-stained-lamp.webp" type="image/webp">
-            <img class="atm-sub-img" src="images/pinon-stained-lamp.jpg" alt="ステンドグラスランプと木のカウンター" loading="lazy">
+            <img class="atm-sub-img" src="images/pinon-stained-lamp.jpg" alt="ステンドグラスランプと木のカウンター" data-i18n-alt="alt.lamp" loading="lazy">
           </picture>
           <div class="atm-sub-body">
             <span class="atm-sub-tag">Interior</span>
-            <h4>木<span class="sm">の</span>温<span class="sm">もりと</span>薄暗<span class="sm">い</span>灯<span class="sm">り</span></h4>
-            <p>木を基調とした内装。間接照明が作り出す光と影が、特別な夜の時間を演出する。</p>
+            <h4 data-i18n="atm.interior.h4">木<span class="sm">の</span>温<span class="sm">もりと</span>薄暗<span class="sm">い</span>灯<span class="sm">り</span></h4>
+            <p data-i18n="atm.interior.p">木を基調とした内装。間接照明が作り出す光と影が、特別な夜の時間を演出する。</p>
           </div>
         </div>
         <div class="atm-sub reveal reveal-d1">
           <picture>
             <source srcset="images/pinon-sofa.webp" type="image/webp">
-            <img class="atm-sub-img" src="images/pinon-sofa.jpg" alt="ソファ席" loading="lazy">
+            <img class="atm-sub-img" src="images/pinon-sofa.jpg" alt="ソファ席" data-i18n-alt="alt.sofa" loading="lazy">
           </picture>
           <div class="atm-sub-body">
             <span class="atm-sub-tag">Seating</span>
-            <h4>カウンター 6席<span class="sm">、</span>テーブル 2卓</h4>
-            <p>小さな空間だからこそ、バーテンダーとの距離が近い。一人でも、自然と馴染める場所。隣の席との適度な距離感が、二人だけの会話もそっと守ってくれる。</p>
+            <h4 data-i18n="atm.seating.h4">カウンター 6席<span class="sm">、</span>テーブル 2卓</h4>
+            <p data-i18n="atm.seating.p">小さな空間だからこそ、バーテンダーとの距離が近い。一人でも、自然と馴染める場所。隣の席との適度な距離感が、二人だけの会話もそっと守ってくれる。</p>
           </div>
         </div>
         <div class="atm-sub reveal reveal-d2">
           <picture>
             <source srcset="images/pinon-whisky.webp" type="image/webp">
-            <img class="atm-sub-img" src="images/pinon-whisky.jpg" alt="ウイスキーグラス" loading="lazy">
+            <img class="atm-sub-img" src="images/pinon-whisky.jpg" alt="ウイスキーグラス" data-i18n-alt="alt.whisky" loading="lazy">
           </picture>
           <div class="atm-sub-body">
             <span class="atm-sub-tag">Vibe</span>
-            <h4>お一人様<span class="sm">も、</span>大歓迎</h4>
-            <p>ふらっと一人で来る常連も多い。気兼ねなく、自分のペースで楽しんでほしい。</p>
+            <h4 data-i18n="atm.vibe.h4">お一人様<span class="sm">も、</span>大歓迎</h4>
+            <p data-i18n="atm.vibe.p">ふらっと一人で来る常連も多い。気兼ねなく、自分のペースで楽しんでほしい。</p>
           </div>
         </div>
       </div>
@@ -1622,21 +1654,21 @@
       <span class="sec-label reveal">The Story</span>
       <div class="story-grid">
         <div class="story-body">
-          <h2 class="reveal">
+          <h2 class="reveal" data-i18n="story.h2">
             大名<span class="sm">の</span>路地裏<span class="sm">に、</span><br>
             17年目<span class="sm">の</span>隠れ家バー<span class="sm">が</span><br>
             灯<span class="sm">り</span>続<span class="sm">ける。</span>
           </h2>
-          <p class="reveal reveal-d1">
+          <p class="reveal reveal-d1" data-i18n="story.p1">
             福岡市中央区大名。天神からほど近い、賑やかな街の一角に、ひっそりと佇むアパートがある。養巴コープ（ヨウハコープ）と呼ばれるそのレトロな建物の1階右奥、扉を開けると——そこはまるで森の中のような、別の世界だ。
           </p>
-          <p class="reveal reveal-d2">
+          <p class="reveal reveal-d2" data-i18n="story.p2">
             木を基調とした内装に、薄暗い間接照明。ずらりと並んだボトルと、笑顔のバーテンダー。カウンター6席、テーブル2卓。小さな空間だからこそ生まれる、ちょうどいい距離感がここにはある。
           </p>
-          <p class="reveal reveal-d3">
+          <p class="reveal reveal-d3" data-i18n="story.p3">
             お一人様も大歓迎。ノーチャージで、気兼ねなく扉を叩いてほしい。自分に合ったお酒を見つけ、心地よい時間を過ごしてみませんか。
           </p>
-          <p class="reveal reveal-d3">
+          <p class="reveal reveal-d3" data-i18n="story.p4">
             窓のない扉の向こうは、外の喧騒から静かに切り離された場所。看板は小さく、路地の奥に灯りだけがそっと目印を灯す。誰かに気づかれることもなく、そっと過ごせる時間がここにはある。マスターは多くを聞かない。ただ、いつもと同じ笑顔で迎えてくれるだけだ。
           </p>
         </div>
@@ -1649,25 +1681,25 @@
   <section id="features">
     <div class="section-wrap">
       <span class="sec-label reveal">Why PiNON Bar</span>
-      <h2 class="reveal">
+      <h2 class="reveal" data-i18n="features.h2">
         大名<span class="sm">の</span>隠<span class="sm">れ</span>家<span class="sm">バーが、</span>17年<br>
         愛<span class="sm">され</span>続<span class="sm">ける</span>理由<span class="sm">。</span>
       </h2>
       <div class="features-row">
         <div class="feat reveal">
           <span class="feat-num">壱</span>
-          <h3>路地裏<span class="sm">だから</span>生<span class="sm">まれる</span>非日常</h3>
-          <p>表通りから見えない、看板もない隠れ家。辿り着いた瞬間の高揚感は、ここでしか味わえない。知る人ぞ知る空間が、17年間変わらず待っている。</p>
+          <h3 data-i18n="feat1.h3">路地裏<span class="sm">だから</span>生<span class="sm">まれる</span>非日常</h3>
+          <p data-i18n="feat1.p">表通りから見えない、看板もない隠れ家。辿り着いた瞬間の高揚感は、ここでしか味わえない。知る人ぞ知る空間が、17年間変わらず待っている。</p>
         </div>
         <div class="feat reveal reveal-d1">
           <span class="feat-num">弐</span>
-          <h3>木<span class="sm">と</span>光<span class="sm">の</span>森空間</h3>
-          <p>木を基調とした内装と薄暗い照明が生み出す、まるで森の中のような感覚。都会の真ん中で、最も遠くへ行ける場所がここにある。</p>
+          <h3 data-i18n="feat2.h3">木<span class="sm">と</span>光<span class="sm">の</span>森空間</h3>
+          <p data-i18n="feat2.p">木を基調とした内装と薄暗い照明が生み出す、まるで森の中のような感覚。都会の真ん中で、最も遠くへ行ける場所がここにある。</p>
         </div>
         <div class="feat reveal reveal-d2">
           <span class="feat-num">参</span>
-          <h3>ノーチャージ<span class="sm">で</span>気軽<span class="sm">に</span></h3>
-          <p>チャージなし。一人でも、誰かと一緒でも。小さな空間だからこそ生まれる温度感の中で、自分だけのお酒を見つけてほしい。</p>
+          <h3 data-i18n="feat3.h3">ノーチャージ<span class="sm">で</span>気軽<span class="sm">に</span></h3>
+          <p data-i18n="feat3.p">チャージなし。一人でも、誰かと一緒でも。小さな空間だからこそ生まれる温度感の中で、自分だけのお酒を見つけてほしい。</p>
         </div>
       </div>
     </div>
@@ -1677,7 +1709,7 @@
   <section id="master">
     <div class="section-wrap">
       <span class="sec-label reveal">Bartender</span>
-      <h2 class="reveal">
+      <h2 class="reveal" data-i18n="master.h2">
         一人飲み<span class="sm">でも、</span><br>
         笑顔<span class="sm">に</span>なれる<span class="sm">。</span>
       </h2>
@@ -1685,13 +1717,13 @@
         <div class="master-photo reveal">
           <picture>
             <source srcset="images/pinon-master2.webp" type="image/webp">
-            <img src="images/pinon-master2.jpg" alt="PiNON Bar マスター" loading="lazy">
+            <img src="images/pinon-master2.jpg" alt="PiNON Bar マスター" data-i18n-alt="alt.master" loading="lazy">
           </picture>
         </div>
         <div class="master-text reveal reveal-d1">
-          <h3>「いらっしゃい」<span class="sm">の</span>一言<span class="sm">で、</span><br>肩<span class="sm">の</span>力<span class="sm">が</span>抜<span class="sm">ける。</span></h3>
-          <p>大名の路地裏で17年。常連もはじめての人も、変わらない笑顔で迎えてくれるマスターがいる。</p>
-          <p>気取らない空気感、自然と生まれる会話。「また来たくなる」理由は、この人柄にある。</p>
+          <h3 data-i18n="master.h3">「いらっしゃい」<span class="sm">の</span>一言<span class="sm">で、</span><br>肩<span class="sm">の</span>力<span class="sm">が</span>抜<span class="sm">ける。</span></h3>
+          <p data-i18n="master.p1">大名の路地裏で17年。常連もはじめての人も、変わらない笑顔で迎えてくれるマスターがいる。</p>
+          <p data-i18n="master.p2">気取らない空気感、自然と生まれる会話。「また来たくなる」理由は、この人柄にある。</p>
         </div>
       </div>
     </div>
@@ -1702,7 +1734,7 @@
     <div class="section-wrap">
       <div class="quote-wrap">
         <span class="quote-deco reveal">"</span>
-        <blockquote class="reveal reveal-d1">
+        <blockquote class="reveal reveal-d1" data-i18n="quote">
           森<span class="sm">の</span>中<span class="sm">にある</span>薄暗<span class="sm">い</span>隠れ家的<span class="sm">な</span>空間<span class="sm">で</span><br>
           美味<span class="sm">しい</span>お酒<span class="sm">を</span>飲む<span class="sm">。</span><br>
           普段<span class="sm">の</span>喧騒<span class="sm">を</span>忘れ、<br>
@@ -1718,16 +1750,16 @@
     <div class="section-wrap">
       <div class="cta-inner">
         <div class="cta-bg-text">路地裏</div>
-        <h2 class="reveal">
+        <h2 class="reveal" data-i18n="cta.h2">
           今夜<span class="sm">、</span>路地裏<span class="sm">の</span><br>
           灯<span class="sm">りを</span>訪<span class="sm">ねよう。</span>
         </h2>
-        <p class="cta-sub reveal reveal-d1">大名で過ごす、特別な夜を。養巴コープ 1階 · Open 20:00〜 · No Charge</p>
-        <p class="reveal reveal-d1" style="font-size:.8rem;color:var(--tan);opacity:.7;margin-top:8px;font-style:italic;letter-spacing:.05em;">カウンター6席の小さなバー。満席の夜も少なくありません。</p>
+        <p class="cta-sub reveal reveal-d1" data-i18n="cta.sub">大名で過ごす、特別な夜を。養巴コープ 1階 · Open 20:00〜 · No Charge</p>
+        <p class="reveal reveal-d1" style="font-size:.8rem;color:var(--tan);opacity:.7;margin-top:8px;font-style:italic;letter-spacing:.05em;" data-i18n="cta.note">カウンター6席の小さなバー。満席の夜も少なくありません。</p>
         <div class="cta-btn-group reveal reveal-d2">
-          <a href="tel:0927327510" class="btn-primary-warm" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_tel'})">📞 空席を電話で確認</a>
-          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_map'})">Googleマップで道順を見る</a>
-          <a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_instagram'})">Instagram を見る</a>
+          <a href="tel:0927327510" class="btn-primary-warm" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_tel'})" data-i18n="cta.tel">📞 空席を電話で確認</a>
+          <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_map'})" data-i18n="btn.map">Googleマップで道順を見る</a>
+          <a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'engagement',event_label:'cta_instagram'})" data-i18n="cta.insta">Instagram を見る</a>
         </div>
         <div class="cta-hours reveal reveal-d3">
           <div class="ch-item">
@@ -1740,11 +1772,11 @@
           </div>
           <div class="ch-item">
             <span class="ch-label">Holiday</span>
-            <span class="ch-val">日曜</span>
+            <span class="ch-val" data-i18n="cta.holiday">日曜</span>
           </div>
           <div class="ch-item">
             <span class="ch-label">Charge</span>
-            <span class="ch-val">なし</span>
+            <span class="ch-val" data-i18n="cta.charge">なし</span>
           </div>
         </div>
       </div>
@@ -1755,26 +1787,26 @@
   <footer>
     <a href="#hero" class="footer-logo">PiNON Bar</a>
     <nav class="footer-nav">
-      <a href="#info">アクセス</a>
-      <a href="#seasonal">メニュー</a>
-      <a href="#atmosphere">空間</a>
-      <a href="#story">物語</a>
-      <a href="#features">特徴</a>
+      <a href="#info" data-i18n="nav.access">アクセス</a>
+      <a href="#seasonal" data-i18n="nav.menu">メニュー</a>
+      <a href="#atmosphere" data-i18n="nav.space">空間</a>
+      <a href="#story" data-i18n="nav.story">物語</a>
+      <a href="#features" data-i18n="nav.features">特徴</a>
       <a href="https://www.instagram.com/pinonbar_daimyo/" target="_blank" rel="noopener">Instagram</a>
     </nav>
-    <span class="footer-copy">© 2026 PiNON Bar · 福岡市大名</span>
+    <span class="footer-copy" data-i18n="footer.copy">© 2026 PiNON Bar · 福岡市大名</span>
   </footer>
 
   <!-- MOBILE FIXED FOOTER CTA -->
   <div class="mobile-footer-cta" id="mobileFooterCta">
     <a href="tel:0927327510" class="mfc-btn mfc-btn--tel" onclick="if(typeof gtag!=='undefined')gtag('event','cta_click',{event_category:'engagement',event_label:'mobile_footer_tel'})">
       <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
-      電話する
+      <span data-i18n="mfc.tel">電話する</span>
     </a>
     <!-- モバイル下部固定バー：ボタン横幅が狭いため「地図を見る」短縮表記を維持 -->
     <a href="https://maps.google.com/?q=福岡市中央区大名1-8-5養巴コープ" target="_blank" rel="noopener" class="mfc-btn mfc-btn--map" onclick="if(typeof gtag!=='undefined')gtag('event','cta_click',{event_category:'engagement',event_label:'mobile_footer_map'})">
       <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-      地図を見る
+      <span data-i18n="mfc.map">地図を見る</span>
     </a>
   </div>
 
@@ -1859,6 +1891,231 @@
           mfc.classList.remove('visible');
         }
       }, { passive: true });
+    })();
+
+    // ── 言語切り替え（JP / EN / KR）：日本語はHTMLの原文、EN・KRは下の辞書で差し替え ──
+    (function() {
+      var I18N = { en: {
+              "nav.access": "Access",
+              "nav.menu": "Menu",
+              "nav.space": "Space",
+              "nav.story": "Story",
+              "nav.features": "Features",
+              "hero.h1": "PiNON Bar | A Hidden Bar in Daimyo, Fukuoka",
+              "hero.catch": "Do you know<br>the light down the back alley?",
+              "hero.desc": "Turn off the street in Daimyo and head to the back of an old apartment building.<br>For 17 years, a hidden bar has quietly kept its light on there.<br>Why not open that door tonight?",
+              "sb.close": "around 2:00",
+              "sb.holidayLabel": "Closed",
+              "sb.holiday": "Sundays",
+              "hero.cta": "See the location",
+              "info.h2": "Finding our back-alley bar<br>in Daimyo, and our hours.",
+              "info.th.name": "Name",
+              "info.th.address": "Address",
+              "info.th.hours": "Hours",
+              "info.th.holiday": "Closed",
+              "info.th.seats": "Seats",
+              "info.th.charge": "Cover charge",
+              "info.th.tel": "Phone",
+              "info.name": "PiNON Bar",
+              "info.address": "Yoha Co-op #106<br>1-8-5 Daimyo, Chuo-ku, Fukuoka<br>1st floor, turn right and go to the back",
+              "info.hours": "Open 20:00 – Close around 2:00",
+              "info.holiday": "Sundays<br>(If Monday is a public holiday, we close on Monday instead)",
+              "info.seats": "6 counter seats / 2 tables",
+              "access.address": "1-8-5 Daimyo<br>Chuo-ku, Fukuoka<br>Yoha Co-op, 1st floor",
+              "access.how": "Enter Yoha Co-op and head right, to the back of the 1st floor.<br>The sign is small, so look for the glow.<br>When you see that light at the end of the alley,<br>you have found PiNON Bar.",
+              "btn.map": "Get directions on Google Maps",
+              "seasonal.h2": "Seasonal Picks",
+              "seasonal.sub": "The best of the season in Kyushu, captured in a glass.",
+              "seasonal.nashi": "Kumamoto Autumn Pear<br>Fresh Cocktail",
+              "seasonal.kyoho": "Kyoho Grape<br>Gin &amp; Tonic",
+              "seasonal.pasta": "Autumn Eggplant &amp; Thick-Cut Bacon<br>Tomato Pasta",
+              "atm.h2": "Open the door to the counter,<br>and time changes.",
+              "atm.h3": "Behind the counter, 17 years of memories.",
+              "atm.p": "Rows of bottles and a smiling bartender. This scene has stood in a Daimyo back alley for 17 years.",
+              "atm.interior.h4": "Warm wood and soft, low light",
+              "atm.interior.p": "A wood-toned interior. The light and shadow of the indirect lighting set the mood for a special night.",
+              "atm.seating.h4": "6 counter seats, 2 tables",
+              "atm.seating.p": "Because the space is small, you are close to the bartender. Even on your own, you will feel at home naturally. And just enough distance between seats keeps a conversation for two between the two of you.",
+              "atm.vibe.h4": "Solo guests are always welcome",
+              "atm.vibe.p": "Many regulars drop in on their own. Relax and enjoy the night at your own pace.",
+              "story.h2": "In a Daimyo back alley,<br>a hidden bar in its 17th year<br>keeps its light on.",
+              "story.p1": "Daimyo, Chuo-ku, Fukuoka. A short walk from Tenjin, in a corner of a lively neighborhood, stands a quiet apartment building. It is a retro building called Yoha Co-op, and when you open the door at the back right of the ground floor, you step into another world, almost like a forest.",
+              "story.p2": "A wood-toned interior and dim, indirect lighting. Rows of bottles and a smiling bartender. Six counter seats and two tables. A small space with just the right sense of closeness.",
+              "story.p3": "Solo guests are always welcome. There is no cover charge, so feel free to knock on the door. Find a drink that suits you and settle into a comfortable evening.",
+              "story.p4": "Behind the windowless door is a place quietly cut off from the noise outside. The sign is small, and only a soft light marks the way at the end of the alley. Here you can spend your time unnoticed. The master does not ask many questions and simply welcomes you with the same smile as always.",
+              "features.h2": "Why this hidden bar in Daimyo<br>has been loved for 17 years.",
+              "feat1.h3": "An escape only a back alley can offer",
+              "feat1.p": "Hidden from the main street, with barely a sign. The thrill of finding it is something you can only feel here. A place for those in the know, unchanged and waiting for 17 years.",
+              "feat2.h3": "A forest of wood and light",
+              "feat2.p": "The wood-toned interior and dim lighting feel almost like being in a forest. Right in the middle of the city, this is the place that takes you farthest away.",
+              "feat3.h3": "No cover charge, no pressure",
+              "feat3.p": "No cover charge. Come alone or with someone. In the warmth that only a small space can create, find a drink that is all your own.",
+              "master.h2": "Even drinking solo,<br>you will leave smiling.",
+              "master.h3": "With a single \"Welcome,\"<br>your shoulders relax.",
+              "master.p1": "17 years in a Daimyo back alley. Regulars and first-timers alike are welcomed by the master with the same unchanging smile.",
+              "master.p2": "An unpretentious atmosphere and conversation that comes naturally. The reason people want to come back is the person behind the counter.",
+              "quote": "Enjoying good drinks<br>in a dim, hidden space, like being deep in a forest.<br>We hope you can forget the everyday noise<br>and take your time here.\n          <cite>— from PiNON Bar's Instagram</cite>",
+              "cta.h2": "Tonight, follow the light<br>down the back alley.",
+              "cta.sub": "A special night in Daimyo. Yoha Co-op 1F · Open 20:00〜 · No Charge",
+              "cta.note": "A small bar with 6 counter seats. It is often full.",
+              "cta.tel": "📞 Call to check for seats",
+              "cta.insta": "See Instagram",
+              "cta.holiday": "Sun",
+              "footer.copy": "© 2026 PiNON Bar · Daimyo, Fukuoka",
+              "sb.charge": "None",
+              "info.charge": "None",
+              "cta.charge": "None",
+              "alt.nashi": "Fresh cocktail made with autumn pears from Kumamoto",
+              "alt.kyoho": "Kyoho grape gin and tonic",
+              "alt.pasta": "Tomato pasta with autumn eggplant and thick-cut bacon",
+              "alt.counter": "The counter inside PiNON Bar",
+              "alt.lamp": "A stained-glass lamp and the wooden counter",
+              "alt.sofa": "Sofa seating",
+              "alt.whisky": "A glass of whisky",
+              "alt.master": "The master of PiNON Bar",
+              "mfc.tel": "Call",
+              "mfc.map": "Map",
+              "meta.title": "PiNON Bar | A Hidden Bar in Daimyo, Fukuoka [Official]",
+              "meta.description": "The official site of PiNON Bar, a hidden bar down a back alley in Daimyo, Fukuoka, since 2009. No cover charge, 6 counter seats. Open from 20:00, closed Sundays."
+      }, ko: {
+              "nav.access": "오시는 길",
+              "nav.menu": "메뉴",
+              "nav.space": "공간",
+              "nav.story": "이야기",
+              "nav.features": "특징",
+              "hero.h1": "PiNON Bar｜후쿠오카 다이묘의 숨은 바",
+              "hero.catch": "골목 안쪽의 불빛을<br>알고 계신가요?",
+              "hero.desc": "다이묘의 골목길로 들어가 아파트 1층 안쪽으로.<br>17년 동안 조용히 불을 밝혀 온 숨은 바가 있습니다.<br>오늘 밤, 그 문을 열어 보시겠어요?",
+              "sb.close": "2:00 무렵",
+              "sb.holidayLabel": "휴무",
+              "sb.holiday": "일요일",
+              "hero.cta": "위치 확인하기",
+              "info.h2": "다이묘 골목 안쪽으로<br>오시는 길과 영업시간",
+              "info.th.name": "가게 이름",
+              "info.th.address": "주소",
+              "info.th.hours": "영업시간",
+              "info.th.holiday": "정기 휴무",
+              "info.th.seats": "좌석",
+              "info.th.charge": "테이블 차지",
+              "info.th.tel": "전화",
+              "info.name": "PiNON Bar (피논 바)",
+              "info.address": "후쿠오카시 주오구 다이묘 1-8-5<br>요하 코프(養巴コープ) 106호<br>1층에서 오른쪽 안쪽",
+              "info.hours": "Open 20:00〜 Close 2:00 무렵",
+              "info.holiday": "일요일<br>(월요일이 공휴일인 경우 월요일 휴무)",
+              "info.seats": "카운터 6석 / 테이블 2개",
+              "access.address": "후쿠오카시 주오구<br>다이묘 1-8-5<br>요하 코프 1층",
+              "access.how": "요하 코프에 들어서면 1층 오른쪽 안쪽으로.<br>간판이 작으니 불빛을 찾아오세요.<br>골목 안쪽에 그 불빛이 보이면——<br>그곳이 PiNON Bar입니다.",
+              "btn.map": "Google 지도로 길 찾기",
+              "seasonal.h2": "계절 추천 메뉴",
+              "seasonal.sub": "규슈의 제철을 한 잔에 담았습니다.",
+              "seasonal.nashi": "구마모토산 가을 배<br>프레시 칵테일",
+              "seasonal.kyoho": "거봉<br>진토닉",
+              "seasonal.pasta": "가을 가지와 두툼한 베이컨<br>토마토 파스타",
+              "atm.h2": "카운터의 문을 열면,<br>시간이 달라집니다.",
+              "atm.h3": "카운터 너머에 17년의 기억이 있습니다.",
+              "atm.p": "줄지어 선 술병과 웃는 얼굴의 바텐더. 이 풍경이 다이묘의 골목 안에서 17년 동안 이어져 왔습니다.",
+              "atm.interior.h4": "나무의 온기와 은은한 불빛",
+              "atm.interior.p": "나무를 기본으로 한 인테리어. 간접 조명이 만드는 빛과 그림자가 특별한 밤을 연출합니다.",
+              "atm.seating.h4": "카운터 6석, 테이블 2개",
+              "atm.seating.p": "작은 공간이기에 바텐더와의 거리도 가깝습니다. 혼자 와도 자연스럽게 어울릴 수 있는 곳. 옆자리와의 적당한 거리감이 두 사람만의 대화도 살며시 지켜 줍니다.",
+              "atm.vibe.h4": "혼자 오셔도 대환영",
+              "atm.vibe.p": "혼자 가볍게 들르는 단골도 많습니다. 부담 없이, 자신의 페이스대로 즐겨 주세요.",
+              "story.h2": "다이묘의 골목 안에서<br>17년째 숨은 바가<br>불을 밝히고 있습니다.",
+              "story.p1": "후쿠오카시 주오구 다이묘. 텐진에서 가까운 번화한 거리 한쪽에 조용히 자리한 아파트가 있습니다. 요하 코프라 불리는 레트로한 건물의 1층 오른쪽 안쪽, 문을 열면——마치 숲속 같은 또 다른 세계가 펼쳐집니다.",
+              "story.p2": "나무를 기본으로 한 인테리어와 어스름한 간접 조명. 줄지어 선 술병과 웃는 얼굴의 바텐더. 카운터 6석, 테이블 2개. 작은 공간이기에 생겨나는 딱 좋은 거리감이 이곳에 있습니다.",
+              "story.p3": "혼자 오셔도 대환영입니다. 테이블 차지가 없으니 부담 없이 문을 두드려 주세요. 나에게 맞는 술을 찾고, 기분 좋은 시간을 보내 보지 않으시겠어요?",
+              "story.p4": "창문 없는 문 너머는 바깥의 소란에서 조용히 떨어진 곳. 간판은 작고, 골목 안쪽의 불빛만이 살며시 길을 알려 줍니다. 누구의 눈에도 띄지 않고 조용히 보낼 수 있는 시간이 이곳에 있습니다. 마스터는 많은 것을 묻지 않습니다. 그저 언제나처럼 같은 미소로 맞아 줄 뿐입니다.",
+              "features.h2": "다이묘의 숨은 바가 17년 동안<br>사랑받아 온 이유",
+              "feat1.h3": "골목 안이기에 만날 수 있는 특별함",
+              "feat1.p": "큰길에서는 보이지 않고 간판도 눈에 띄지 않는 숨은 공간. 찾아낸 순간의 설렘은 이곳에서만 느낄 수 있습니다. 아는 사람만 아는 공간이 17년 동안 변함없이 기다리고 있습니다.",
+              "feat2.h3": "나무와 빛의 숲 같은 공간",
+              "feat2.p": "나무를 기본으로 한 인테리어와 어스름한 조명이 만들어 내는, 마치 숲속에 있는 듯한 감각. 도심 한가운데에서 가장 멀리 떠날 수 있는 곳이 여기에 있습니다.",
+              "feat3.h3": "테이블 차지 없이 부담 없이",
+              "feat3.p": "테이블 차지 없음. 혼자서도, 누군가와 함께여도. 작은 공간이기에 생겨나는 따뜻함 속에서 나만의 술을 찾아 보세요.",
+              "master.h2": "혼자 마셔도<br>웃음이 나는 곳.",
+              "master.h3": "「어서 오세요」 한마디에<br>어깨의 힘이 풀립니다.",
+              "master.p1": "다이묘의 골목 안에서 17년. 단골도 처음 온 사람도 변함없는 미소로 맞아 주는 마스터가 있습니다.",
+              "master.p2": "격식 없는 분위기, 자연스럽게 시작되는 대화. '또 오고 싶어지는' 이유는 바로 이 사람에게 있습니다.",
+              "quote": "숲속에 있는 듯한 어스름한 숨은 공간에서<br>맛있는 술을 마신다.<br>평소의 소란을 잊고<br>느긋한 시간을 보내셨으면 합니다.\n          <cite>— PiNON Bar Instagram에서</cite>",
+              "cta.h2": "오늘 밤, 골목 안쪽의<br>불빛을 찾아가 보세요.",
+              "cta.sub": "다이묘에서 보내는 특별한 밤. 요하 코프 1층 · Open 20:00〜 · No Charge",
+              "cta.note": "카운터 6석의 작은 바입니다. 만석인 밤도 적지 않습니다.",
+              "cta.tel": "📞 전화로 빈자리 확인",
+              "cta.insta": "Instagram 보기",
+              "cta.holiday": "일요일",
+              "footer.copy": "© 2026 PiNON Bar · 후쿠오카시 다이묘",
+              "sb.charge": "없음",
+              "info.charge": "없음",
+              "cta.charge": "없음",
+              "alt.nashi": "구마모토산 가을 배 프레시 칵테일",
+              "alt.kyoho": "거봉 진토닉",
+              "alt.pasta": "가을 가지와 두툼한 베이컨 토마토 파스타",
+              "alt.counter": "PiNON Bar 매장 카운터",
+              "alt.lamp": "스테인드글라스 램프와 나무 카운터",
+              "alt.sofa": "소파석",
+              "alt.whisky": "위스키 잔",
+              "alt.master": "PiNON Bar 마스터",
+              "mfc.tel": "전화하기",
+              "mfc.map": "지도 보기",
+              "meta.title": "PiNON Bar｜후쿠오카 다이묘의 숨은 바【공식】",
+              "meta.description": "후쿠오카 다이묘 골목 안, 2009년부터 이어 온 숨은 바 「PiNON Bar」 공식 사이트. 테이블 차지 없음, 카운터 6석. 20:00 오픈, 일요일 휴무."
+      } };
+      var LANGS = ['ja', 'en', 'ko'];
+      var textEls = document.querySelectorAll('[data-i18n]');
+      var altEls = document.querySelectorAll('[data-i18n-alt]');
+      var metaDesc = document.querySelector('meta[name="description"]');
+      textEls.forEach(function(el) { el._ja = el.innerHTML; });
+      altEls.forEach(function(el) { el._ja = el.getAttribute('alt'); });
+      var jaTitle = document.title;
+      var jaDesc = metaDesc ? metaDesc.getAttribute('content') : '';
+
+      function loadKoreanFonts() {
+        if (document.getElementById('font-kr')) return;
+        var link = document.createElement('link');
+        link.id = 'font-kr';
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap';
+        document.head.appendChild(link);
+      }
+
+      function applyLang(lang) {
+        var dict = I18N[lang] || {};
+        textEls.forEach(function(el) {
+          var v = dict[el.getAttribute('data-i18n')];
+          el.innerHTML = (lang !== 'ja' && v !== undefined) ? v : el._ja;
+        });
+        altEls.forEach(function(el) {
+          var v = dict[el.getAttribute('data-i18n-alt')];
+          el.setAttribute('alt', (lang !== 'ja' && v !== undefined) ? v : el._ja);
+        });
+        document.documentElement.lang = lang;
+        document.title = dict['meta.title'] || jaTitle;
+        if (metaDesc) metaDesc.setAttribute('content', dict['meta.description'] || jaDesc);
+        if (lang === 'ko') loadKoreanFonts();
+        document.querySelectorAll('.lang-switch button').forEach(function(b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+      }
+
+      function setLang(lang) {
+        applyLang(lang);
+        try { localStorage.setItem('pinon_lang', lang); } catch (e) {}
+        var url = new URL(location.href);
+        if (lang === 'ja') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+        history.replaceState(null, '', url);
+        if (typeof gtag !== 'undefined') gtag('event', 'language_switch', { event_category: 'engagement', event_label: lang });
+      }
+
+      document.querySelectorAll('.lang-switch button').forEach(function(b) {
+        b.addEventListener('click', function() { setLang(b.getAttribute('data-lang')); });
+      });
+
+      // 優先順：URLの ?lang= → 前回選んだ言語 → 日本語（デフォルト）
+      var initial = new URLSearchParams(location.search).get('lang');
+      if (LANGS.indexOf(initial) < 0) {
+        try { initial = localStorage.getItem('pinon_lang'); } catch (e) { initial = null; }
+      }
+      if (LANGS.indexOf(initial) >= 0 && initial !== 'ja') applyLang(initial);
     })();
   </script>
 </body>
